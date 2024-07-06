@@ -1,0 +1,24 @@
+.header {
+  padding-block: 40px;
+  background-color: rgba(0 0 0 / 0.4);
+}
+
+.list {
+  color: var(--main-text-color, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  font-size: 22px;
+}
+
+.item {
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 25px;
+}
+
+.item_active, .item:hover {
+  background-color: #c6c6c682;
+}
+

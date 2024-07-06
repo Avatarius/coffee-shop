@@ -1,0 +1,25 @@
+.container {
+  grid-area: nav;
+  // background: radial-gradient(87.49% 135.69% at 98.55% 92.63%, rgb(58, 27, 26) 0%, rgb(124, 87, 60) 100%);
+  inline-size: 100%;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+}
+
+.item {
+  text-transform: capitalize;
+  color: var(--navigation-font-color, #fff8e8);
+  cursor: pointer;
+  padding-inline: 30px;
+  padding-block: 40px 20px;
+  border-radius: 0 0 30px 30px;
+
+}
+
+.item_active {
+  background: var(--navigation-active-gradient, rgba(223, 195, 157));
+}
