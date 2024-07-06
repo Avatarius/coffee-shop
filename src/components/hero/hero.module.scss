@@ -1,32 +1,29 @@
 .container {
-  min-block-size: 100dvh;
-  background: center / cover no-repeat
-    url("../../images/tools-used-process-coffee-making.jpg");
   display: flex;
   flex-direction: column;
+  background: center / cover no-repeat
+    url("../../images/tools-used-process-coffee-making.jpg");
+  min-block-size: 100dvh;
 }
 
 .info {
+  display: grid;
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  max-inline-size: 900px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   padding-inline: 100px;
 }
 
 .title {
+  margin-block-end: 30px;
   font-size: 70px;
   text-transform: capitalize;
-  color: #fff;
-  margin-block-end: 30px;
 }
 
 .text {
   font-size: 24px;
   line-height: 195%;
-  color: #fff;
+  margin-block-end: 30px;
 }
 
 .logo {

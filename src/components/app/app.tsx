@@ -2,10 +2,12 @@ import { Hero } from "../hero/hero";
 
 function App() {
   return (
-    <div>
-      <Hero/>
-    </div>
-  )
+    <>
+      <Hero />
+      <main>
+      </main>
+    </>
+  );
 }
 
-export {App};
+export { App };

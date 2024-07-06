@@ -1,31 +1,13 @@
 .container {
-  // border: 2px solid transparent;
-  border-radius: 49px;
   border: none;
-  padding: 12px 36px;
-  color: #f8e4be;
+  border-radius: 10px;
+  padding: 12px 20px;
+  color: inherit;
   font-family: inherit;
-  font-size: 24px;
+  font-size: 20px;
   text-transform: capitalize;
-  background-color: transparent;
+  background-color: #f80;
+  background-color: #F28123;
   cursor: pointer;
   appearance: none;
-  block-size: 55px;
-  position: relative;
-  transition: background-color 0.15s ease-in-out;
-}
-
-.container:hover {
-  background: rgba(247, 225, 188, 0.3);
-}
-
-.container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 49px;
-  border: 2px solid transparent;
-  background: linear-gradient(10deg, #e0a872 0%, #f8e4be 44%, #fff3e0 55%, #e0a872 100%) border-box;
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
 }
