@@ -1,0 +1,23 @@
+.title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-inline: 40px;
+  font-size: 42px;
+  text-align: center;
+  margin-block: 35px;
+}
+
+.title::before {
+  content: "";
+  background-color: #fff;
+  inline-size: 100%;
+  block-size: 2px;
+}
+
+.title::after {
+  content: "";
+  background-color: #fff;
+  inline-size: 100%;
+  block-size: 2px;
+}

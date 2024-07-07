@@ -11,7 +11,7 @@ function CardProduct({title, cost, volume} : ICardProductProps) {
   return (
     <article className={styles.container}>
       <img src={coffee} alt="Кофе" className={styles.img}/>
-      <h2 className={styles.title}>{title}</h2>
+      <h3 className={styles.title}>{title}</h3>
       <p className={styles.cost}>{cost} р</p>
       <p className={styles.volume}>{volume} мл</p>
       <button className={styles.button}>+</button>
