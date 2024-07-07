@@ -2,10 +2,12 @@
   // padding-inline: 340px;
   // display: flex;
   // justify-content: center;
+  margin-block-start: 85px;
 }
 
 .list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: min-content min-content min-content;
+  justify-content: center;
+  gap: 40px;
 }
