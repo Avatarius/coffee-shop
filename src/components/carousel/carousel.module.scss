@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  margin-inline: auto;
+  padding-inline: 40px;
+  inline-size: 1180px;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  inline-size: 100%;
+}
+
+.list {
+  display: flex;
+  gap: 20px;
+  inline-size: 100%;
+}
+
+.item {
+  // transition: translate 0.2s linear;
+}
+
+.button {
+  position: absolute;
+  border: none;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+  inset-block-start: calc(50% - 30px);
+  inline-size: 60px;
+  block-size: 60px;
+  appearance: none;
+}
+
+.button_left {
+  inset-inline-start: -20px;
+}
+
+.button_right {
+  inset-inline-end: -20px;
+}
