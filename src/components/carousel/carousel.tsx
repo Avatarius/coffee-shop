@@ -14,19 +14,27 @@ function Carousel({ cards }: ICarouselProps) {
     <li className={styles.item}>{card}</li>
   ));
 
-  function handleSlide(direction: boolean) {
+  function slideWithoutTransition(index: number) {
+    return new Promise((resolve) => {
+      setTransition(false);
+      setCurrentIndex(index);
+      setTimeout(() => {
+        setTransition(true);
+        resolve("");
+      }, 0);
+    });
+  }
+
+  async function handleSlide(direction: boolean) {
     // true направо, false налево
     if (direction) {
+      if (currentIndex === 0) {
+        await slideWithoutTransition(cards.length);
+      }
       setCurrentIndex((prev) => prev - 1);
     } else {
       if (currentIndex === cards.length) {
-        setTransition(false);
-        setCurrentIndex(0);
-        setTimeout(() => {
-          setTransition(true);
-          setCurrentIndex((prev) => prev + 1);
-        }, 0);
-        return;
+        await slideWithoutTransition(0);
       }
       setCurrentIndex((prev) => prev + 1);
     }
