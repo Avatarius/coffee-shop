@@ -9,35 +9,25 @@ interface ICarouselProps {
 function Carousel({ cards }: ICarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(2);
   const [transition, setTransition] = useState(true);
+
   const listItems = cards.map((card) => (
-    <li
-      className={styles.item}
-      onTransitionEnd={() => console.log('END')
-      }
-      style={{
-        translate: `calc((-100% - 20px) * ${currentIndex}`,
-        transition: transition ? "translate 0.2s linear" : "none",
-      }}
-    >
-      {card}
-    </li>
+    <li className={styles.item}>{card}</li>
   ));
-
-
-  if (currentIndex === cards.length + 1) {
-    // setCurrentIndex(1);
-
-
-  }
-  if (currentIndex === -1 ) {
-    // setCurrentIndex(cards.length - 1);
-  }
 
   function handleSlide(direction: boolean) {
     // true направо, false налево
     if (direction) {
       setCurrentIndex((prev) => prev - 1);
     } else {
+      if (currentIndex === cards.length) {
+        setTransition(false);
+        setCurrentIndex(0);
+        setTimeout(() => {
+          setTransition(true);
+          setCurrentIndex((prev) => prev + 1);
+        }, 0);
+        return;
+      }
       setCurrentIndex((prev) => prev + 1);
     }
   }
@@ -70,7 +60,13 @@ function Carousel({ cards }: ICarouselProps) {
         </svg>
       </button>
       <div className={styles.slider}>
-        <ul className={styles.list}>
+        <ul
+          className={styles.list}
+          style={{
+            translate: `calc(-33.9% * ${currentIndex})`,
+            transition: transition ? "translate 0.2s linear" : "none",
+          }}
+        >
           {[
             listItems.at(-2),
             listItems.at(-1),
