@@ -10,8 +10,24 @@ function Carousel({ cards }: ICarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(2);
   const [transition, setTransition] = useState(true);
 
-  const listItems = cards.map((card) => (
-    <li className={styles.item}>{card}</li>
+  const listItems = [
+    cards.at(-2),
+    cards.at(-1),
+    ...cards,
+    cards.at(0),
+    cards.at(1),
+  ].map((card, index) => (
+    <li
+      className={clsx({
+        [styles.item]: true,
+        [styles.item_active]:
+          index === currentIndex + 1 ||
+          index === currentIndex - (cards.length - 1) ||
+          index === currentIndex + (cards.length + 1),
+      })}
+    >
+      {card}
+    </li>
   ));
 
   function slideWithoutTransition(index: number) {
@@ -71,17 +87,11 @@ function Carousel({ cards }: ICarouselProps) {
         <ul
           className={styles.list}
           style={{
-            translate: `calc(-33.9% * ${currentIndex})`,
+            translate: `calc(-33.9% * ${currentIndex}) 0`,
             transition: transition ? "translate 0.2s linear" : "none",
           }}
         >
-          {[
-            listItems.at(-2),
-            listItems.at(-1),
-            ...listItems,
-            listItems.at(0),
-            listItems.at(1),
-          ]}
+          {listItems}
         </ul>
       </div>
     </section>

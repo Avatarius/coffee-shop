@@ -18,7 +18,12 @@
 }
 
 .item {
-  // transition: translate 0.2s linear;
+  translate: 0 50%;
+  transition: translate 0.35s ease-in-out;
+}
+
+.item_active {
+  translate: 0;
 }
 
 .button {
