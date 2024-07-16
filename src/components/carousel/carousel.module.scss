@@ -3,6 +3,9 @@
   margin-inline: auto;
   padding-inline: 40px;
   inline-size: 1180px;
+  background-color: rgba(0 0 0 / 0.2);
+  border-radius: 15px;
+  padding: 35px 85px 0;
 }
 
 .slider {
@@ -39,9 +42,9 @@
 }
 
 .button_left {
-  inset-inline-start: -20px;
+  inset-inline-start: 0;
 }
 
 .button_right {
-  inset-inline-end: -20px;
+  inset-inline-end: 0px;
 }

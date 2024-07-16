@@ -6,6 +6,7 @@ import { CardProduct } from "../cardProduct/cardProduct";
 import { Carousel } from "../carousel/carousel";
 import { reviews } from "../../data/reviews";
 import { CardReview } from "../cardReview/cardReview";
+import { Footer } from "../footer/footer";
 
 function App() {
   const cardsMenu = products.map(product => <CardProduct title={product.name} cost={product.price} volume={product.volume}/>);
@@ -22,6 +23,7 @@ function App() {
         <Splitter text='Отзывы'/>
         <Carousel cards={cardsReviews}/>
       </main>
+      <Footer/>
     </>
   );
 }

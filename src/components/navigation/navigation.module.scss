@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  font-size: 22px;
+}
+
+.item {
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 25px;
+}
+
+.item_active, .item:hover {
+  background-color: #c6c6c682;
+}

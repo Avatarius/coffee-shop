@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  padding: 25px;
+  background-color: rgba(0 0 0 / 0.3);
+  margin-block-start: 75px;
+}
+
+.title {
+  margin-block-end: 20px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

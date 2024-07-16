@@ -1,19 +1,13 @@
-import styles from './header.module.scss';
-import clsx from 'clsx';
+import styles from "./header.module.scss";
+import clsx from "clsx";
+import { Navigation } from "../navigation/navigation";
 
 function Header() {
   return (
     <header className={styles.header}>
-      <nav>
-        <ul className={styles.list}>
-          <li className={clsx([styles.item, styles.item_active])}>Главная</li>
-          <li className={clsx([styles.item])}>Меню</li>
-          <li className={clsx([styles.item])}>Отзывы</li>
-          <li className={clsx([styles.item])}>Контакты</li>
-        </ul>
-      </nav>
+      <Navigation />
     </header>
-  )
+  );
 }
 
-export {Header};
+export { Header };
