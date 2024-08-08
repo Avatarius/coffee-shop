@@ -1,0 +1,50 @@
+.container {
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  inline-size: 100%;
+  block-size: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-block-end: 20px;
+}
+
+.title {
+  font-size: 27px;
+  margin-block-end: 10px;
+}
+
+.volume {
+  margin-block-end: 20px;
+}
+
+.cost {
+  font-size: 25px;
+}
+
+.description {
+  max-inline-size: 350px;
+  margin-block-end: 10px;
+
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  appearance: none;
+}
+
+.button {
+  background-color: var(--button-color, #f28123);
+  appearance: none;
+  color: inherit;
+  border: none;
+  font-size: 30px;
+  min-inline-size: 100px;
+  min-block-size: 40px;
+  border-radius: 10px;
+}

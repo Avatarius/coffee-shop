@@ -10,8 +10,27 @@
   cursor: pointer;
   padding: 12px;
   border-radius: 25px;
+  position: relative;
+}
+
+.item::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255 255 255 / 0.7);
+  inline-size: 0;
+  block-size: 2px;
+  inset-inline-start: 50%;
+  inset-block-start: 80%;
+  transition: inline-size 0.2s linear, inset-inline-start 0.2s linear;
 }
 
 .item_active, .item:hover {
-  background-color: #c6c6c682;
+  // background-color: #c6c6c682;
 }
+
+.item:hover::after {
+  inline-size: 80%;
+  inset-inline-start: 10%;
+}
+
+
