@@ -4,10 +4,12 @@ import { fetchReviews } from "../thunk/reviews";
 
 interface IReviewsState {
   reviews: IReview[];
+  currentReview: IReview | null;
 }
 
 const initialState: IReviewsState = {
   reviews: [],
+  currentReview: null,
 };
 
 const reviewsSlice = createSlice({
@@ -15,8 +17,13 @@ const reviewsSlice = createSlice({
   initialState,
   selectors: {
     selectReviews: (state) => state.reviews,
+    selectCurrentReview: (state) => state.currentReview,
   },
-  reducers: {},
+  reducers: {
+    setCurrentReview: (state, action) => {
+      state.currentReview = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchReviews.fulfilled, (state, action) => {
       state.reviews = action.payload;
@@ -25,6 +32,13 @@ const reviewsSlice = createSlice({
 });
 
 const reviewReducer = reviewsSlice.reducer;
-const { selectReviews } = reviewsSlice.selectors;
+const { setCurrentReview } = reviewsSlice.actions;
+const { selectReviews, selectCurrentReview } = reviewsSlice.selectors;
 
-export { reviewsSlice, reviewReducer, selectReviews };
+export {
+  reviewsSlice,
+  reviewReducer,
+  setCurrentReview,
+  selectReviews,
+  selectCurrentReview,
+};

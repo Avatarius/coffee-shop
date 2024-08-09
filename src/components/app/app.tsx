@@ -9,8 +9,17 @@ import { useDispatch } from "../../services/store";
 import { fetchProducts } from "../../services/thunk/products";
 import { useEffect, useState } from "react";
 import { useSelector } from "../../services/store";
-import { selectPopular, selectProducts } from "../../services/slices/products";
-import { selectReviews } from "../../services/slices/reviews";
+import {
+  selectCurrentProduct,
+  selectPopular,
+  selectProducts,
+  setCurrentProduct,
+} from "../../services/slices/products";
+import {
+  selectCurrentReview,
+  selectReviews,
+  setCurrentReview,
+} from "../../services/slices/reviews";
 import { fetchReviews } from "../../services/thunk/reviews";
 import { Modal } from "../modal/modal";
 import { IModalData, IProduct, IReview, ModalType } from "../../utils/types";
@@ -18,34 +27,29 @@ import { ModalProduct } from "../modalProduct/modalProduct";
 import { ModalReview } from "../modalReview/modalReview";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    dispatch(fetchReviews());
+  }, []);
+
   const [modalData, setModalData] = useState<IModalData>({
     isVisible: false,
     type: ModalType.None,
   });
-  const [currentProduct, setCurrentProduct] = useState<IProduct>({
-    name: "",
-    cost: 0,
-    volume: 0,
-    description: "",
-  });
-  const [currentReview, setCurrentReview] = useState<IReview>({
-    name: "",
-    text: "",
-  });
+
+  const currentProduct = useSelector(selectCurrentProduct);
+  const currentReview = useSelector(selectCurrentReview);
 
   function handleClickProductCard(product: IProduct) {
     setModalData({ isVisible: true, type: ModalType.Product });
-    setCurrentProduct({
-      name: product.name,
-      cost: product.cost,
-      volume: product.volume,
-      description: product.description,
-    });
+    dispatch(setCurrentProduct(product));
   }
 
   function handleClickReviewCard(review: IReview) {
     setModalData({ isVisible: true, type: ModalType.Review });
-    setCurrentReview({ name: review.name, text: review.text });
+    dispatch(setCurrentReview(review));
   }
 
   const cardsMenu = useSelector(selectProducts).map((product) => (
@@ -71,12 +75,6 @@ function App() {
       onClick={() => handleClickReviewCard(review)}
     />
   ));
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-    dispatch(fetchReviews());
-  }, []);
 
   function renderModal() {
     switch (modalData.type) {
@@ -85,15 +83,20 @@ function App() {
           <ModalProduct
             modalData={modalData}
             setModalData={setModalData}
-            name={currentProduct.name}
-            cost={currentProduct.cost}
-            volume={currentProduct.volume}
-            description={currentProduct.description}
+            name={currentProduct?.name ?? ""}
+            cost={currentProduct?.cost ?? 0}
+            volume={currentProduct?.volume ?? 0}
+            description={currentProduct?.description ?? ""}
           />
         );
       case ModalType.Review:
         return (
-          <ModalReview modalData={modalData} setModalData={setModalData} name={currentReview.name} text={currentReview.text}/>
+          <ModalReview
+            modalData={modalData}
+            setModalData={setModalData}
+            name={currentReview?.name ?? ""}
+            text={currentReview?.text ?? ""}
+          />
         );
       default:
         return (
@@ -106,7 +109,6 @@ function App() {
 
   return (
     <>
-      {/* <Modal modalData={modalData} setModalData={setModalData} content={<div>test</div>}/> */}
       {renderModal()}
       <Hero />
       <main>
