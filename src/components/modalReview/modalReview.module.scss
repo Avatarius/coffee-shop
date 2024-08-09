@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.img {
+  // inline-size: 100%;
+  inline-size: 150px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.title {
+  font-size: 23px;
+}
+
+.description {
+  max-inline-size: 350px;
+}

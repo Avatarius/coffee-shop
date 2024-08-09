@@ -13,8 +13,9 @@ import { selectPopular, selectProducts } from "../../services/slices/products";
 import { selectReviews } from "../../services/slices/reviews";
 import { fetchReviews } from "../../services/thunk/reviews";
 import { Modal } from "../modal/modal";
-import { IModalData, IProduct, ModalType } from "../../utils/types";
-import { ModalProduct } from "../ModalProduct/modalProduct";
+import { IModalData, IProduct, IReview, ModalType } from "../../utils/types";
+import { ModalProduct } from "../modalProduct/modalProduct";
+import { ModalReview } from "../modalReview/modalReview";
 
 function App() {
   const [modalData, setModalData] = useState<IModalData>({
@@ -27,8 +28,12 @@ function App() {
     volume: 0,
     description: "",
   });
+  const [currentReview, setCurrentReview] = useState<IReview>({
+    name: "",
+    text: "",
+  });
 
-  function setProductModalData(product: IProduct) {
+  function handleClickProductCard(product: IProduct) {
     setModalData({ isVisible: true, type: ModalType.Product });
     setCurrentProduct({
       name: product.name,
@@ -38,12 +43,17 @@ function App() {
     });
   }
 
+  function handleClickReviewCard(review: IReview) {
+    setModalData({ isVisible: true, type: ModalType.Review });
+    setCurrentReview({ name: review.name, text: review.text });
+  }
+
   const cardsMenu = useSelector(selectProducts).map((product) => (
     <CardProduct
       title={product.name}
       cost={product.cost}
       volume={product.volume}
-      onClick={() => setProductModalData(product)}
+      onClick={() => handleClickProductCard(product)}
     />
   ));
   const cardsPopular = useSelector(selectPopular).map((product) => (
@@ -51,11 +61,15 @@ function App() {
       title={product.name}
       cost={product.cost}
       volume={product.volume}
-      onClick={() => setProductModalData(product)}
+      onClick={() => handleClickProductCard(product)}
     />
   ));
   const cardsReviews = useSelector(selectReviews).map((review) => (
-    <CardReview name={review.name} text={review.text} />
+    <CardReview
+      name={review.name}
+      text={review.text}
+      onClick={() => handleClickReviewCard(review)}
+    />
   ));
   const dispatch = useDispatch();
 
@@ -79,9 +93,7 @@ function App() {
         );
       case ModalType.Review:
         return (
-          <Modal modalData={modalData} setModalData={setModalData}>
-            <div>review</div>
-          </Modal>
+          <ModalReview modalData={modalData} setModalData={setModalData} name={currentReview.name} text={currentReview.text}/>
         );
       default:
         return (
