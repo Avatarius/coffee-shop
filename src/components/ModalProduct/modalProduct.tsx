@@ -6,14 +6,8 @@ import { IProduct } from "../../utils/types";
 
 type IModalProductProps = IModalProps & IProduct;
 
-function ModalProduct({
-  modalData,
-  setModalData,
-  name,
-  cost,
-  volume,
-  description,
-}: IModalProductProps) {
+function ModalProduct(props: IModalProductProps) {
+  const { modalData, setModalData, name, cost, volume, description } = props;
   return (
     <Modal modalData={modalData} setModalData={setModalData}>
       <div className={styles.container}>
