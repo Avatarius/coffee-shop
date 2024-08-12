@@ -7,9 +7,9 @@ import { IProduct } from "../../utils/types";
 type IModalProductProps = IModalProps & IProduct;
 
 function ModalProduct(props: IModalProductProps) {
-  const { modalData, setModalData, name, cost, volume, description } = props;
+  const { name, cost, volume, description } = props;
   return (
-    <Modal modalData={modalData} setModalData={setModalData}>
+    <Modal>
       <div className={styles.container}>
         <img src={coffee} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>

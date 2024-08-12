@@ -3,6 +3,10 @@ import styles from "./hero.module.scss";
 import { Header } from "../header/header";
 import { Navigation } from "../navigation/navigation";
 
+interface IHero {
+
+}
+
 function Hero() {
   return (
     <section className={styles.container}>

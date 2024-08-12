@@ -19,7 +19,8 @@ interface IModalData {
 enum ModalType {
   None = 0,
   Product,
-  Review
+  Review,
+  Basket
 }
 
 export {ModalType};

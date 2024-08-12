@@ -1,31 +1,45 @@
 import ReactDOM from "react-dom";
 import styles from "./modal.module.scss";
 import clsx from "clsx";
-import { Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
-import { IModalData } from "../../utils/types";
+import {
+  ReactNode,
+  useRef,
+} from "react";
+import { useDispatch } from "../../services/store";
+import {
+  closeModal,
+  selectIsVisible,
+} from "../../services/slices/modal";
+import { useSelector } from "react-redux";
 
 const modalRoot = document.getElementById("modal");
 
 interface IModalProps {
-  modalData: IModalData;
-  setModalData: Dispatch<SetStateAction<IModalData>>;
   children?: ReactNode;
 }
 
-function Modal({ modalData, setModalData, children }: IModalProps) {
+function Modal({ children }: IModalProps) {
+  const dispatch = useDispatch();
+  const isVisible = useSelector(selectIsVisible);
   const modalRef = useRef<HTMLDivElement>(null);
-
   return ReactDOM.createPortal(
     <div
       className={clsx({
         [styles.container]: true,
-        [styles.container_open]: modalData.isVisible,
+        [styles.container_open]: isVisible,
       })}
-      onClick={() => setModalData((prevData) => ({...prevData, isVisible: false}))}
+      onClick={() => dispatch(closeModal())}
     >
-      <div className={styles.modal} ref={modalRef} onClick={(event: React.MouseEvent) => event.stopPropagation()}>
+      <div
+        className={styles.modal}
+        ref={modalRef}
+        onClick={(event: React.MouseEvent) => event.stopPropagation()}
+      >
         {children}
-        <button className={styles.button} onClick={() => setModalData((prevData) => ({...prevData, isVisible: false}))}>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(closeModal())}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -49,4 +63,4 @@ function Modal({ modalData, setModalData, children }: IModalProps) {
 }
 
 export { Modal };
-export type {IModalProps};
+export type { IModalProps };

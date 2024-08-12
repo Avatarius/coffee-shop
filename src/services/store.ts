@@ -6,10 +6,12 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook,
 } from "react-redux";
+import { modalSlice } from "./slices/modal";
 
 const rootReducer = combineReducers({
   [productsSlice.name]: productsSlice.reducer,
   [reviewsSlice.name]: reviewsSlice.reducer,
+  [modalSlice.name]: modalSlice.reducer
 });
 
 const store = configureStore({

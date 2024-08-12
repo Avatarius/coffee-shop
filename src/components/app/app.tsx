@@ -7,7 +7,7 @@ import { CardReview } from "../cardReview/cardReview";
 import { Footer } from "../footer/footer";
 import { useDispatch } from "../../services/store";
 import { fetchProducts } from "../../services/thunk/products";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "../../services/store";
 import {
   selectCurrentProduct,
@@ -22,9 +22,10 @@ import {
 } from "../../services/slices/reviews";
 import { fetchReviews } from "../../services/thunk/reviews";
 import { Modal } from "../modal/modal";
-import { IModalData, IProduct, IReview, ModalType } from "../../utils/types";
+import { IProduct, IReview, ModalType } from "../../utils/types";
 import { ModalProduct } from "../modalProduct/modalProduct";
 import { ModalReview } from "../modalReview/modalReview";
+import { openModal, selectModalType } from "../../services/slices/modal";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,22 +35,19 @@ function App() {
     dispatch(fetchReviews());
   }, []);
 
-  const [modalData, setModalData] = useState<IModalData>({
-    isVisible: false,
-    type: ModalType.None,
-  });
+  const modalType = useSelector(selectModalType);
 
   const currentProduct = useSelector(selectCurrentProduct);
   const currentReview = useSelector(selectCurrentReview);
 
   function handleClickProductCard(product: IProduct) {
-    setModalData({ isVisible: true, type: ModalType.Product });
     dispatch(setCurrentProduct(product));
+    dispatch(openModal(ModalType.Product));
   }
 
   function handleClickReviewCard(review: IReview) {
-    setModalData({ isVisible: true, type: ModalType.Review });
     dispatch(setCurrentReview(review));
+    dispatch(openModal(ModalType.Review));
   }
 
   const cardsMenu = useSelector(selectProducts).map((product) => (
@@ -77,12 +75,10 @@ function App() {
   ));
 
   function renderModal() {
-    switch (modalData.type) {
+    switch (modalType) {
       case ModalType.Product:
         return (
           <ModalProduct
-            modalData={modalData}
-            setModalData={setModalData}
             name={currentProduct?.name ?? ""}
             cost={currentProduct?.cost ?? 0}
             volume={currentProduct?.volume ?? 0}
@@ -92,18 +88,14 @@ function App() {
       case ModalType.Review:
         return (
           <ModalReview
-            modalData={modalData}
-            setModalData={setModalData}
             name={currentReview?.name ?? ""}
             text={currentReview?.text ?? ""}
           />
         );
+      case ModalType.Basket:
+        return <Modal>basket</Modal>;
       default:
-        return (
-          <Modal modalData={modalData} setModalData={setModalData}>
-            <div>empty</div>
-          </Modal>
-        );
+        return <Modal />;
     }
   }
 

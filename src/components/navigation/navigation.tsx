@@ -3,7 +3,7 @@ import styles from './navigation.module.scss';
 
 function Navigation() {
   return (
-    <nav>
+    <nav className={styles.navigation}>
       <ul className={styles.list}>
         <li className={clsx([styles.item, styles.item_active])}>Главная</li>
         <li className={clsx([styles.item])}>Меню</li>

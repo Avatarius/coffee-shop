@@ -1,5 +1,25 @@
 .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: ". navigation button";
+  padding: 40px 30px;
   padding-block: 40px;
   background-color: rgba(0 0 0 / 0.4);
 }
 
+.basket {
+  grid-area: button;
+  justify-self: end;
+  border: none;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none;
+  padding: 0;
+}
+
+
+/* .basket__svg {
+  inline-size: 100%;
+  block-size: 100%;
+} */
