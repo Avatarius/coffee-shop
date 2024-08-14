@@ -20,7 +20,6 @@ const modalSlice = createSlice({
       state.isVisible = true;
     },
     closeModal: (state) => {
-      // state.type = ModalType.None;
       state.isVisible = false;
     },
   },

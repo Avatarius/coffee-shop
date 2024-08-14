@@ -26,6 +26,7 @@ import { IProduct, IReview, ModalType } from "../../utils/types";
 import { ModalProduct } from "../modalProduct/modalProduct";
 import { ModalReview } from "../modalReview/modalReview";
 import { openModal, selectModalType } from "../../services/slices/modal";
+import { ModalBasket } from "../modalBasket/modalBasket";
 
 function App() {
   const dispatch = useDispatch();
@@ -93,7 +94,7 @@ function App() {
           />
         );
       case ModalType.Basket:
-        return <Modal>basket</Modal>;
+        return <ModalBasket/>;
       default:
         return <Modal />;
     }
