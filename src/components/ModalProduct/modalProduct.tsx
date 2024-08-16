@@ -1,13 +1,30 @@
 import { Modal } from "../modal/modal";
-import { IModalProps } from "../modal/modal";
 import coffee from "../../images/coffee.jpg";
 import styles from "./modalProduct.module.scss";
 import { IProduct } from "../../utils/types";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../services/slices/basket";
 
-type IModalProductProps = IModalProps & IProduct;
 
-function ModalProduct(props: IModalProductProps) {
-  const { name, cost, volume, description } = props;
+type IModalProductProps = Omit<IProduct, 'id'>;
+
+
+function ModalProduct(props: IProduct) {
+  const { id, name, cost, volume, description } = props;
+
+  const dispatch = useDispatch();
+
+  function handleAddButtonClick() {
+    const product = {
+      id,
+      name,
+      cost,
+      volume,
+      description
+    };
+    dispatch(addToBasket(product));
+  }
+
   return (
     <Modal>
       <div className={styles.container}>
@@ -17,7 +34,7 @@ function ModalProduct(props: IModalProductProps) {
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
           <p className={styles.cost}>{cost} р</p>
-          <button className={styles.button}>+</button>
+          <button className={styles.button} onClick={() => handleAddButtonClick()}>+</button>
         </div>
       </div>
     </Modal>

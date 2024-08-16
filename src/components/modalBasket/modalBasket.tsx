@@ -2,36 +2,119 @@ import { Modal } from "../modal/modal";
 import styles from "./modalBasket.module.scss";
 import coffee from "../../images/coffee.jpg";
 import { Counter } from "../counter/counter";
+import { useDispatch, useSelector } from "../../services/store";
+import { removeFromBasket, selectProductList } from "../../services/slices/basket";
 
 function ModalBasket() {
-  const mockBasket = [
+
+  const basket = useSelector(selectProductList);
+
+  const a = [
     {
+      id: '1',
       name: "Мокачино",
-      price: 120,
+      cost: 120,
       volume: 200,
       description:
         "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
     },
     {
-      name: "Латте",
-      price: 99,
+      id: '2',
+      name: "Мокачино",
+      cost: 120,
       volume: 200,
       description:
         "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
     },
     {
-      name: "Раф",
-      price: 249,
-      volume: 300,
+      id: '3',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
       description:
         "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
     },
-  ];
+    {
+      id: '4',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '5',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '6',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '7',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '8',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '9',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '10',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '11',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+    {
+      id: '12',
+      name: "Мокачино",
+      cost: 120,
+      volume: 200,
+      description:
+        "imperdiet nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra",
+    },
+  ]
+
+  const dispatch = useDispatch();
+
   return (
     <Modal>
       <div className={styles.container}>
         <ul className={styles.list}>
-          {mockBasket.map((item) => (
+          {basket.map((item) => (
             <li className={styles.item}>
               <div className={styles.product}>
                 <img
@@ -44,9 +127,9 @@ function ModalBasket() {
                   <p>{item.volume}</p>
                 </div>
                 <Counter/>
-                <p className={styles.cost}>{item.price} р</p>
+                <p className={styles.cost}>{item.cost} р</p>
               </div>
-              <button className={styles.remove}>
+              <button className={styles.remove} onClick={() => dispatch(removeFromBasket(item.id))}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 0 19 19" width={35}>
                   <path
                     fill="#fff"

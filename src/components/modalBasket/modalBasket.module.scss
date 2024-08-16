@@ -1,9 +1,31 @@
+.container {
+  min-inline-size: 500px;
+}
+
+.list {
+  block-size: 520px;
+  overflow: auto;
+  padding-inline-end: 10px;
+}
+
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}
+
 .item {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-block-end: 20px;
-  min-inline-size: 500px;
+
 }
 
 .product {

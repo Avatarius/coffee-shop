@@ -5,7 +5,8 @@ async function getCollection<T>(collectionName: string) {
   const list: T[] = [];
   const querySnapshot = await getDocs(collection(db, collectionName));
   querySnapshot.forEach((doc) => {
-    list.push(doc.data() as T);
+    const product = {...doc.data() as T, id: doc.id, test: 'test'};
+    list.push(product);
   });
   return list;
 }

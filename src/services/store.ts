@@ -7,11 +7,13 @@ import {
   useSelector as selectorHook,
 } from "react-redux";
 import { modalSlice } from "./slices/modal";
+import { basketSlice } from "./slices/basket";
 
 const rootReducer = combineReducers({
   [productsSlice.name]: productsSlice.reducer,
   [reviewsSlice.name]: reviewsSlice.reducer,
-  [modalSlice.name]: modalSlice.reducer
+  [modalSlice.name]: modalSlice.reducer,
+  [basketSlice.name]: basketSlice.reducer
 });
 
 const store = configureStore({
