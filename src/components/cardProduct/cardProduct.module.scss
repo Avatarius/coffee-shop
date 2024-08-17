@@ -1,4 +1,4 @@
-.container {
+/* .container {
   column-gap: 20px;
   border-radius: 17px;
   padding: 12px;
@@ -12,41 +12,32 @@
   'img cost button';
   align-items: center;
 }
+ */
 
+.container {
+  background-color: #000000;
+  border-radius: 10px;
+  min-inline-size: 300px;
+}
 .img {
   object-fit: cover;
-  block-size: 170px;
-  border-radius: inherit;
-  grid-area: img
+  inline-size: 100%;
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+
+.info {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
   font-size: 25px;
-  grid-area: title;
 }
 
 .cost {
-  font-size: 18px;
-  grid-area: cost;
+  font-size: 20px;
 }
 
-.volume {
-  font-size: 18px;
-  grid-area: volume;
-}
-
-.button {
-  align-self: center;
-  border: none;
-  border-radius: 10px;
-  color: inherit;
-  font-size: 30px;
-  background-color: #f28123;
-  appearance: none;
-  inline-size: 42px;
-  block-size: 42px;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  grid-area: button;
-}

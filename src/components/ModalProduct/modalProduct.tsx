@@ -2,27 +2,30 @@ import { Modal } from "../modal/modal";
 import coffee from "../../images/coffee.jpg";
 import styles from "./modalProduct.module.scss";
 import { IProduct } from "../../utils/types";
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../../services/slices/basket";
-
-
-type IModalProductProps = Omit<IProduct, 'id'>;
-
+import { useSelector, useDispatch } from "../../services/store";
+import { addToBasket, removeFromBasket, selectProductList } from "../../services/slices/basket";
 
 function ModalProduct(props: IProduct) {
   const { id, name, cost, volume, description } = props;
 
   const dispatch = useDispatch();
+  const basket = useSelector(selectProductList);
+  const isAlreadyInBasket =
+    basket.findLastIndex((item) => item.id === id) !== -1;
 
   function handleAddButtonClick() {
-    const product = {
+    const product: IProduct = {
       id,
       name,
       cost,
       volume,
-      description
+      description,
     };
-    dispatch(addToBasket(product));
+    if (!isAlreadyInBasket) {
+      dispatch(addToBasket(product));
+    } else {
+      dispatch(removeFromBasket(id));
+    }
   }
 
   return (
@@ -34,7 +37,12 @@ function ModalProduct(props: IProduct) {
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
           <p className={styles.cost}>{cost} р</p>
-          <button className={styles.button} onClick={() => handleAddButtonClick()}>+</button>
+          <button
+            className={styles.button}
+            onClick={() => handleAddButtonClick()}
+          >
+            {isAlreadyInBasket ? "✓" : "+"}
+          </button>
         </div>
       </div>
     </Modal>

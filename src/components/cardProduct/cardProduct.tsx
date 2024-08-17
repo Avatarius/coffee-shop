@@ -12,10 +12,10 @@ function CardProduct({ title, cost, volume, onClick }: ICardProductProps) {
   return (
     <article className={styles.container} onClick={onClick}>
       <img src={coffee} alt="Кофе" className={styles.img} />
-      <h3 className={styles.title}>{title}</h3>
-      <p className={styles.cost}>{cost} р</p>
-      <p className={styles.volume}>{volume} мл</p>
-      <button className={styles.button}>+</button>
+      <div className={styles.info}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.cost}>{cost} р</p>
+      </div>
     </article>
   );
 }

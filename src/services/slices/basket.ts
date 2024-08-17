@@ -28,7 +28,7 @@ const basketSlice = createSlice({
   },
   selectors: {
     selectProductList: (state) => state.productList,
-    selectTotalSum: (state) => state.totalSum
+    selectTotalSum: (state) => state.totalSum,
   }
 });
 
