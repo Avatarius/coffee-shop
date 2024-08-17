@@ -29,11 +29,12 @@ const basketSlice = createSlice({
   selectors: {
     selectProductList: (state) => state.productList,
     selectTotalSum: (state) => state.totalSum,
+    selectProductListLength: (state) => state.productList.length
   }
 });
 
 const {addToBasket, removeFromBasket} = basketSlice.actions;
-const {selectProductList, selectTotalSum} = basketSlice.selectors;
+const {selectProductList, selectTotalSum, selectProductListLength} = basketSlice.selectors;
 
 
-export {basketSlice, addToBasket, removeFromBasket, selectProductList, selectTotalSum};
+export {basketSlice, addToBasket, removeFromBasket, selectProductList, selectTotalSum, selectProductListLength};

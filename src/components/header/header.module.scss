@@ -11,15 +11,28 @@
   grid-area: button;
   justify-self: end;
   border: none;
+  padding: 0;
   color: inherit;
   background-color: transparent;
   cursor: pointer;
   appearance: none;
-  padding: 0;
+  position: relative;
 }
 
+.count__container {
+  position: absolute;
+  background-color: var(--button-color, #f28123);
+  inset-inline-start: calc(100% - 13px);
+  inset-block-start: calc(100% - 20px);
+  inline-size: 18px;
+  block-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  cursor: default;
+}
 
-/* .basket__svg {
-  inline-size: 100%;
-  block-size: 100%;
-} */
+.count__span {
+  font-size: 13px;
+}

@@ -1,11 +1,13 @@
 import styles from "./header.module.scss";
 import { Navigation } from "../navigation/navigation";
-import { useDispatch } from "../../services/store";
+import { useDispatch, useSelector } from "../../services/store";
 import { openModal } from "../../services/slices/modal";
 import { ModalType } from "../../utils/types";
+import { selectProductListLength } from "../../services/slices/basket";
 
 function Header() {
   const dispatch = useDispatch();
+  const basketLength = useSelector(selectProductListLength);
   return (
     <header className={styles.header}>
       <Navigation />
@@ -13,6 +15,9 @@ function Header() {
         className={styles.basket}
         onClick={() => dispatch(openModal(ModalType.Basket))}
       >
+        <div className={styles.count__container}>
+        <span className={styles.count__span}>{basketLength}</span>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 64 64"

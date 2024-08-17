@@ -1,36 +1,21 @@
-/* .container {
-  column-gap: 20px;
-  border-radius: 17px;
-  padding: 12px;
-  background: linear-gradient(#121212, #080808);
-  display: grid;
-  grid-template-columns: 1fr 1fr min-content;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas:
-  'img title .'
-  'img volume .'
-  'img cost button';
-  align-items: center;
-}
- */
-
 .container {
-  background-color: #000000;
   border-radius: 10px;
+  background-color: #000000;
+  cursor: pointer;
   min-inline-size: 300px;
 }
 .img {
-  object-fit: cover;
-  inline-size: 100%;
   border-start-start-radius: inherit;
   border-start-end-radius: inherit;
+  object-fit: cover;
+  inline-size: 100%;
 }
 
 .info {
-  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px;
 }
 
 .title {
@@ -40,4 +25,3 @@
 .cost {
   font-size: 20px;
 }
-
