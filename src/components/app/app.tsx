@@ -80,11 +80,6 @@ function App() {
       case ModalType.Product:
         return (
           <ModalProduct
-            id={currentProduct?.id ?? ""}
-            name={currentProduct?.name ?? ""}
-            cost={currentProduct?.cost ?? 0}
-            volume={currentProduct?.volume ?? 0}
-            description={currentProduct?.description ?? ""}
           />
         );
       case ModalType.Review:

@@ -18,12 +18,18 @@ const productsSlice = createSlice({
   reducers: {
     setCurrentProduct: (state, action) => {
       state.currentProduct = action.payload;
+    },
+    setVolume: (state, action) => {
+      if (state.currentProduct) {
+        state.currentProduct.volume = action.payload;
+      }
     }
   },
   selectors: {
     selectProducts: (state) => state.products,
     selectPopular: (state) => state.products.filter(item => item.isPopular),
-    selectCurrentProduct: (state) => state.currentProduct
+    selectCurrentProduct: (state) => state.currentProduct,
+    selectCurrentVolume: (state) => state.currentProduct?.volume
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -33,7 +39,7 @@ const productsSlice = createSlice({
 });
 
 const productsReducer = productsSlice.reducer;
-const {setCurrentProduct} = productsSlice.actions;
-const {selectProducts, selectPopular, selectCurrentProduct} = productsSlice.selectors;
+const {setCurrentProduct, setVolume} = productsSlice.actions;
+const {selectProducts, selectPopular, selectCurrentProduct, selectCurrentVolume} = productsSlice.selectors;
 
-export { productsSlice, productsReducer, selectProducts, selectPopular, selectCurrentProduct, setCurrentProduct };
+export { productsSlice, productsReducer, selectProducts, selectPopular, selectCurrentProduct, selectCurrentVolume, setCurrentProduct, setVolume };

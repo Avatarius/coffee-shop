@@ -3,28 +3,34 @@ import coffee from "../../images/coffee.jpg";
 import styles from "./modalProduct.module.scss";
 import { IProduct } from "../../utils/types";
 import { useSelector, useDispatch } from "../../services/store";
-import { addToBasket, removeFromBasket, selectProductList } from "../../services/slices/basket";
+import {
+  addToBasket,
+  removeFromBasket,
+  selectProductList,
+} from "../../services/slices/basket";
+import { VolumeRadioGroup } from "../volumeRadioGroup/volumeRadioGroup";
+import { selectCurrentProduct } from "../../services/slices/products";
 
-function ModalProduct(props: IProduct) {
-  const { id, name, cost, volume, description } = props;
+function ModalProduct() {
+  const currentProduct = useSelector(selectCurrentProduct);
+
+  if (!currentProduct) {
+    return null;
+  }
+
+  const { id, name, volume, cost, description } = currentProduct;
 
   const dispatch = useDispatch();
   const basket = useSelector(selectProductList);
   const isAlreadyInBasket =
-    basket.findLastIndex((item) => item.id === id) !== -1;
+    basket.findLastIndex((item) => item.id === currentProduct?.id) !== -1;
 
   function handleAddButtonClick() {
-    const product: IProduct = {
-      id,
-      name,
-      cost,
-      volume,
-      description,
-    };
+    if (!currentProduct) return;
     if (!isAlreadyInBasket) {
-      dispatch(addToBasket(product));
+      dispatch(addToBasket(currentProduct));
     } else {
-      dispatch(removeFromBasket(id));
+      dispatch(removeFromBasket(currentProduct.id));
     }
   }
 
@@ -33,7 +39,7 @@ function ModalProduct(props: IProduct) {
       <div className={styles.container}>
         <img src={coffee} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>
-        <p className={styles.volume}>{volume} мл</p>
+        <VolumeRadioGroup />
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
           <p className={styles.cost}>{cost} р</p>
