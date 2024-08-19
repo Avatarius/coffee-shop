@@ -33,7 +33,7 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
+      state.products = action.payload.map(product => ({...product, totalPrice: product.price}));
     });
   },
 });
