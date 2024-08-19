@@ -6,6 +6,7 @@ interface IProduct {
   volume: number;
   description: string;
   isPopular?: boolean;
+  volumeRange: number[];
 }
 
 interface IReview {

@@ -9,7 +9,7 @@ interface IProductsState {
 
 const initialState: IProductsState = {
   products: [],
-  currentProduct: null
+  currentProduct: null,
 };
 
 const productsSlice = createSlice({
@@ -19,27 +19,51 @@ const productsSlice = createSlice({
     setCurrentProduct: (state, action) => {
       state.currentProduct = action.payload;
     },
-    setVolume: (state, action) => {
+    setCurrentProductVolume: (state, action) => {
       if (state.currentProduct) {
         state.currentProduct.volume = action.payload;
       }
-    }
+    },
+    setCurrentProductTotalPrice: (state) => {
+      if (state.currentProduct) {
+        state.currentProduct.totalPrice = Math.round(
+          (state.currentProduct.price / state.currentProduct.volumeRange[0]) *
+            state.currentProduct.volume
+        );
+      }
+    },
   },
   selectors: {
     selectProducts: (state) => state.products,
-    selectPopular: (state) => state.products.filter(item => item.isPopular),
+    selectPopular: (state) => state.products.filter((item) => item.isPopular),
     selectCurrentProduct: (state) => state.currentProduct,
-    selectCurrentVolume: (state) => state.currentProduct?.volume
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload.map(product => ({...product, totalPrice: product.price}));
+      state.products = action.payload.map((product) => ({
+        ...product,
+        totalPrice: product.price,
+      }));
     });
   },
 });
 
 const productsReducer = productsSlice.reducer;
-const {setCurrentProduct, setVolume} = productsSlice.actions;
-const {selectProducts, selectPopular, selectCurrentProduct, selectCurrentVolume} = productsSlice.selectors;
+const {
+  setCurrentProduct,
+  setCurrentProductVolume,
+  setCurrentProductTotalPrice,
+} = productsSlice.actions;
+const { selectProducts, selectPopular, selectCurrentProduct } =
+  productsSlice.selectors;
 
-export { productsSlice, productsReducer, selectProducts, selectPopular, selectCurrentProduct, selectCurrentVolume, setCurrentProduct, setVolume };
+export {
+  productsSlice,
+  productsReducer,
+  selectProducts,
+  selectPopular,
+  selectCurrentProduct,
+  setCurrentProduct,
+  setCurrentProductVolume,
+  setCurrentProductTotalPrice,
+};

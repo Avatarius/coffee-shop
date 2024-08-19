@@ -18,7 +18,7 @@ function ModalProduct() {
     return null;
   }
 
-  const { id, name, volume, price, description } = currentProduct;
+  const {name, totalPrice, description } = currentProduct;
 
   const dispatch = useDispatch();
   const basket = useSelector(selectProductList);
@@ -39,10 +39,10 @@ function ModalProduct() {
       <div className={styles.container}>
         <img src={coffee} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>
-        <VolumeRadioGroup />
+        <VolumeRadioGroup range={currentProduct.volumeRange}/>
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
-          <p className={styles.cost}>{price} р</p>
+          <p className={styles.cost}>{totalPrice} р</p>
           <button
             className={styles.button}
             onClick={() => handleAddButtonClick()}
