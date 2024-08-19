@@ -47,9 +47,9 @@ function Modal({ children }: IModalProps) {
           >
             <g
               stroke="#fff"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
             >
               <path d="m3 21.32 18-18M3 3.32l18 18" />
             </g>

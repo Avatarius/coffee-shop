@@ -27,6 +27,7 @@ import { ModalProduct } from "../modalProduct/modalProduct";
 import { ModalReview } from "../modalReview/modalReview";
 import { openModal, selectModalType } from "../../services/slices/modal";
 import { ModalBasket } from "../modalBasket/modalBasket";
+import { products } from "../../data/products";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,7 +39,6 @@ function App() {
 
   const modalType = useSelector(selectModalType);
 
-  const currentProduct = useSelector(selectCurrentProduct);
   const currentReview = useSelector(selectCurrentReview);
 
   function handleClickProductCard(product: IProduct) {
@@ -57,6 +57,7 @@ function App() {
       cost={product.price}
       volume={product.volume}
       onClick={() => handleClickProductCard(product)}
+      key={product.id}
     />
   ));
   const cardsPopular = useSelector(selectPopular).map((product) => (
@@ -65,6 +66,7 @@ function App() {
       cost={product.price}
       volume={product.volume}
       onClick={() => handleClickProductCard(product)}
+      key={product.id}
     />
   ));
   const cardsReviews = useSelector(selectReviews).map((review) => (
@@ -72,6 +74,7 @@ function App() {
       name={review.name}
       text={review.text}
       onClick={() => handleClickReviewCard(review)}
+      key={review.id}
     />
   ));
 
@@ -85,6 +88,7 @@ function App() {
       case ModalType.Review:
         return (
           <ModalReview
+            id={currentReview?.id ?? ""}
             name={currentReview?.name ?? ""}
             text={currentReview?.text ?? ""}
           />

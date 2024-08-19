@@ -10,6 +10,7 @@ interface IProduct {
 }
 
 interface IReview {
+  id: string;
   name: string,
   text: string;
 }

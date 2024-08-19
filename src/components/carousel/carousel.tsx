@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import styles from "./carousel.module.scss";
 import clsx from "clsx";
 
@@ -25,6 +25,7 @@ function Carousel({ cards }: ICarouselProps) {
           index === currentIndex - (cards.length - 1) ||
           index === currentIndex + (cards.length + 1),
       })}
+      key={crypto.randomUUID()}
     >
       {card}
     </li>
