@@ -1,7 +1,7 @@
 interface IProduct {
   id: string;
   name: string;
-  cost: number;
+  price: number;
   volume: number;
   description: string;
   isPopular?: boolean;

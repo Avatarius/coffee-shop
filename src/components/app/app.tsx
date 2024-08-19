@@ -54,7 +54,7 @@ function App() {
   const cardsMenu = useSelector(selectProducts).map((product) => (
     <CardProduct
       title={product.name}
-      cost={product.cost}
+      cost={product.price}
       volume={product.volume}
       onClick={() => handleClickProductCard(product)}
     />
@@ -62,7 +62,7 @@ function App() {
   const cardsPopular = useSelector(selectPopular).map((product) => (
     <CardProduct
       title={product.name}
-      cost={product.cost}
+      cost={product.price}
       volume={product.volume}
       onClick={() => handleClickProductCard(product)}
     />

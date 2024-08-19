@@ -127,7 +127,7 @@ function ModalBasket() {
                   <p>{item.volume}</p>
                 </div>
                 <Counter/>
-                <p className={styles.cost}>{item.cost} р</p>
+                <p className={styles.cost}>{item.price} р</p>
               </div>
               <button className={styles.remove} onClick={() => dispatch(removeFromBasket(item.id))}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 0 19 19" width={35}>

@@ -18,7 +18,7 @@ function ModalProduct() {
     return null;
   }
 
-  const { id, name, volume, cost, description } = currentProduct;
+  const { id, name, volume, price, description } = currentProduct;
 
   const dispatch = useDispatch();
   const basket = useSelector(selectProductList);
@@ -42,7 +42,7 @@ function ModalProduct() {
         <VolumeRadioGroup />
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
-          <p className={styles.cost}>{cost} р</p>
+          <p className={styles.cost}>{price} р</p>
           <button
             className={styles.button}
             onClick={() => handleAddButtonClick()}
