@@ -18,7 +18,7 @@ const basketSlice = createSlice({
   reducers: {
     addToBasket: (state, action) => {
       state.productList.push(action.payload);
-      state.totalSum += action.payload.cost;
+      state.totalSum += action.payload.totalPrice;
     },
     removeFromBasket: (state, action) => {
       console.log(action.payload);

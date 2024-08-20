@@ -3,7 +3,7 @@ import styles from "./modalBasket.module.scss";
 import coffee from "../../images/coffee.jpg";
 import { Counter } from "../counter/counter";
 import { useDispatch, useSelector } from "../../services/store";
-import { removeFromBasket, selectProductList } from "../../services/slices/basket";
+import { removeFromBasket, selectProductList, selectTotalSum } from "../../services/slices/basket";
 
 function ModalBasket() {
 
@@ -126,7 +126,7 @@ function ModalBasket() {
                   <h3 className={styles.title}>{item.name}</h3>
                   <p>{item.volume}</p>
                 </div>
-                <Counter/>
+                <Counter onClick={() => console.log(123)}/>
                 <p className={styles.cost}>{item.price} р</p>
               </div>
               <button className={styles.remove} onClick={() => dispatch(removeFromBasket(item.id))}>
@@ -141,6 +141,7 @@ function ModalBasket() {
             </li>
           ))}
         </ul>
+        <p className={styles.totalPrice}>Общая стоимость: {useSelector(selectTotalSum)}р</p>
         <button className={styles.button}>Далее</button>
       </div>
     </Modal>
