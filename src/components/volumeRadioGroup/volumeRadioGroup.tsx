@@ -1,6 +1,6 @@
 import styles from "./volumeRadioGroup.module.scss";
 import { useDispatch, useSelector } from "../../services/store";
-import { selectCurrentProduct, setCurrentProductTotalPrice, setCurrentProductVolume } from "../../services/slices/products";
+import { selectCurrentProduct, setCurrentProductVolume } from "../../services/slices/products";
 import clsx from "clsx";
 
 interface IVolumeRadioGroupProps {
@@ -13,7 +13,6 @@ function VolumeRadioGroup({ range }: IVolumeRadioGroupProps) {
 
   function handleButtonClick(volume: number) {
     dispatch(setCurrentProductVolume(volume));
-    dispatch(setCurrentProductTotalPrice());
   }
 
   return (

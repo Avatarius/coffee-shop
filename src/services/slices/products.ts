@@ -22,14 +22,7 @@ const productsSlice = createSlice({
     setCurrentProductVolume: (state, action) => {
       if (state.currentProduct) {
         state.currentProduct.volume = action.payload;
-      }
-    },
-    setCurrentProductTotalPrice: (state) => {
-      if (state.currentProduct) {
-        state.currentProduct.totalPrice = Math.round(
-          (state.currentProduct.price / state.currentProduct.volumeRange[0]) *
-            state.currentProduct.volume
-        );
+        state.currentProduct.totalPrice = Math.round((state.currentProduct.price / state.currentProduct.volumeRange[0]) * action.payload);
       }
     },
   },
@@ -52,7 +45,6 @@ const productsReducer = productsSlice.reducer;
 const {
   setCurrentProduct,
   setCurrentProductVolume,
-  setCurrentProductTotalPrice,
 } = productsSlice.actions;
 const { selectProducts, selectPopular, selectCurrentProduct } =
   productsSlice.selectors;
@@ -65,5 +57,4 @@ export {
   selectCurrentProduct,
   setCurrentProduct,
   setCurrentProductVolume,
-  setCurrentProductTotalPrice,
 };
