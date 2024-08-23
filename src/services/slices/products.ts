@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../../utils/types";
 import { fetchProducts } from "../thunk/products";
+import { calculateTotalPrice } from "../../utils/utils";
 
 interface IProductsState {
   products: IProduct[];
@@ -22,7 +23,7 @@ const productsSlice = createSlice({
     setCurrentProductVolume: (state, action) => {
       if (state.currentProduct) {
         state.currentProduct.volume = action.payload;
-        state.currentProduct.totalPrice = Math.round((state.currentProduct.price / state.currentProduct.volumeRange[0]) * action.payload);
+        state.currentProduct.totalPrice = calculateTotalPrice(state.currentProduct.price, state .currentProduct.volumeRange[0], action.payload);
       }
     },
   },

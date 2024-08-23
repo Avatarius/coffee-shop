@@ -1,40 +1,90 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IProduct } from "../../utils/types";
-
+import { IBasketItem } from "../../utils/types";
+import { calculateTotalPrice } from "../../utils/utils";
 
 interface IBasketInitialState {
-  productList: IProduct[];
+  productList: IBasketItem[];
   totalSum: number;
 }
 
 const initialState: IBasketInitialState = {
   productList: [],
-  totalSum: 0
+  totalSum: 0,
 };
 
 const basketSlice = createSlice({
-  name: 'basket',
+  name: "basket",
   initialState,
   reducers: {
     addToBasket: (state, action) => {
-      state.productList.push(action.payload);
-      state.totalSum += action.payload.totalPrice;
+      const basketItem = { ...action.payload, count: 1 };
+      state.productList.push(basketItem);
     },
     removeFromBasket: (state, action) => {
-      console.log(action.payload);
-
-      state.productList = state.productList.filter(product => product.id !== action.payload);
-    }
+      state.productList = state.productList.filter(
+        (product) => product.id !== action.payload
+      );
+    },
+    setBasketItemVolume: (state, action) => {
+      const { id, volume } = action.payload;
+      const product = state.productList.find((item) => item.id === id);
+      if (!product) {
+        return;
+      }
+      product.volume = volume;
+    },
+    setBasketItemCount: (state, action) => {
+      const { id, count } = action.payload;
+      const product = state.productList.find((item) => item.id === id);
+      if (!product) {
+        return;
+      }
+      product.count = count;
+    },
+    setTotalPrice: (state, action) => {
+      const id = action.payload;
+      const product = state.productList.find((item) => item.id === id);
+      if (!product) {
+        return;
+      }
+      product.totalPrice =
+        calculateTotalPrice(
+          product.price,
+          product.volumeRange[0],
+          product.volume
+        ) * product.count;
+    },
+    setTotalSum: (state) => {
+      state.totalSum = state.productList.reduce((acc, item) => {
+        return acc + item.totalPrice;
+      }, 0);
+    },
   },
   selectors: {
     selectProductList: (state) => state.productList,
     selectTotalSum: (state) => state.totalSum,
-    selectProductListLength: (state) => state.productList.length
-  }
+    selectProductListLength: (state) => state.productList.length,
+  },
 });
 
-const {addToBasket, removeFromBasket} = basketSlice.actions;
-const {selectProductList, selectTotalSum, selectProductListLength} = basketSlice.selectors;
+const {
+  addToBasket,
+  removeFromBasket,
+  setBasketItemCount,
+  setTotalPrice,
+  setTotalSum,
+} = basketSlice.actions;
+const { selectProductList, selectTotalSum, selectProductListLength } =
+  basketSlice.selectors;
 
-
-export {basketSlice, addToBasket, removeFromBasket, selectProductList, selectTotalSum, selectProductListLength};
+export {
+  basketSlice,
+  addToBasket,
+  removeFromBasket,
+  setBasketItemCount,
+  setTotalPrice,
+  setTotalSum,
+  selectProductList,
+  selectTotalSum,
+  selectProductListLength,
+};

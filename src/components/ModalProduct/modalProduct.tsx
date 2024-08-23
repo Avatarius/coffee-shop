@@ -7,31 +7,31 @@ import {
   addToBasket,
   removeFromBasket,
   selectProductList,
+  setTotalSum,
 } from "../../services/slices/basket";
 import { VolumeRadioGroup } from "../volumeRadioGroup/volumeRadioGroup";
 import { selectCurrentProduct } from "../../services/slices/products";
+import { isAlreadyInBasket } from "../../utils/utils";
 
 function ModalProduct() {
   const currentProduct = useSelector(selectCurrentProduct);
-
   if (!currentProduct) {
     return null;
   }
-
-  const {name, totalPrice, description } = currentProduct;
+  const {id, name, totalPrice, description, volumeRange } = currentProduct;
 
   const dispatch = useDispatch();
   const basket = useSelector(selectProductList);
-  const isAlreadyInBasket =
-    basket.findLastIndex((item) => item.id === currentProduct?.id) !== -1;
+
 
   function handleAddButtonClick() {
     if (!currentProduct) return;
-    if (!isAlreadyInBasket) {
+    if (!isAlreadyInBasket(basket, id)) {
       dispatch(addToBasket(currentProduct));
     } else {
-      dispatch(removeFromBasket(currentProduct.id));
+      dispatch(removeFromBasket(id));
     }
+    dispatch(setTotalSum());
   }
 
   return (
@@ -39,7 +39,7 @@ function ModalProduct() {
       <div className={styles.container}>
         <img src={coffee} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>
-        <VolumeRadioGroup range={currentProduct.volumeRange}/>
+        <VolumeRadioGroup id={id} range={volumeRange}/>
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
           <p className={styles.cost}>{totalPrice} р</p>
@@ -47,7 +47,7 @@ function ModalProduct() {
             className={styles.button}
             onClick={() => handleAddButtonClick()}
           >
-            {isAlreadyInBasket ? "✓" : "+"}
+            {isAlreadyInBasket(basket, id) ? "✓" : "+"}
           </button>
         </div>
       </div>

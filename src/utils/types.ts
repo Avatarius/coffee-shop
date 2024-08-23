@@ -9,6 +9,10 @@ interface IProduct {
   volumeRange: number[];
 }
 
+interface IBasketItem extends IProduct {
+  count: number;
+}
+
 interface IReview {
   id: string;
   name: string,
@@ -29,4 +33,4 @@ enum ModalType {
 
 export {ModalType};
 
-export type { IProduct, IReview, IModalData };
+export type { IProduct, IBasketItem, IReview, IModalData };
