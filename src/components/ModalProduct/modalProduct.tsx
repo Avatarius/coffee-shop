@@ -6,7 +6,6 @@ import {
   addToBasket,
   removeFromBasket,
   selectProductList,
-  selectTotalSum,
   setBasketItemVolume,
   setTotalPrice,
   setTotalSum,
