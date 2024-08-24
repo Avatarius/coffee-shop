@@ -71,6 +71,7 @@ const {
   addToBasket,
   removeFromBasket,
   setBasketItemCount,
+  setBasketItemVolume,
   setTotalPrice,
   setTotalSum,
 } = basketSlice.actions;
@@ -82,6 +83,7 @@ export {
   addToBasket,
   removeFromBasket,
   setBasketItemCount,
+  setBasketItemVolume,
   setTotalPrice,
   setTotalSum,
   selectProductList,

@@ -1,36 +1,52 @@
 import { Modal } from "../modal/modal";
 import coffee from "../../images/coffee.jpg";
 import styles from "./modalProduct.module.scss";
-import { IProduct } from "../../utils/types";
 import { useSelector, useDispatch } from "../../services/store";
 import {
   addToBasket,
   removeFromBasket,
   selectProductList,
+  selectTotalSum,
+  setBasketItemVolume,
+  setTotalPrice,
   setTotalSum,
 } from "../../services/slices/basket";
 import { VolumeRadioGroup } from "../volumeRadioGroup/volumeRadioGroup";
-import { selectCurrentProduct } from "../../services/slices/products";
+import { selectCurrentProduct, setCurrentProductVolume } from "../../services/slices/products";
 import { isAlreadyInBasket } from "../../utils/utils";
+import { IProduct } from "../../utils/types";
 
 function ModalProduct() {
   const currentProduct = useSelector(selectCurrentProduct);
+  const basket = useSelector(selectProductList);
   if (!currentProduct) {
     return null;
   }
-  const {id, name, totalPrice, description, volumeRange } = currentProduct;
+  const product = (
+    isAlreadyInBasket(basket, currentProduct.id)
+      ? basket.find((item) => item.id === currentProduct.id)
+      : currentProduct
+  ) as IProduct;
+  const { id, name, totalPrice, description, volume, volumeRange } = product;
 
   const dispatch = useDispatch();
-  const basket = useSelector(selectProductList);
-
 
   function handleAddButtonClick() {
-    if (!currentProduct) return;
+    if (!product) return;
     if (!isAlreadyInBasket(basket, id)) {
-      dispatch(addToBasket(currentProduct));
+      dispatch(addToBasket(product));
     } else {
       dispatch(removeFromBasket(id));
     }
+    dispatch(setTotalSum());
+  }
+
+  function handleVolumeButtonClick(volume: number) {
+    dispatch(setCurrentProductVolume(volume));
+    if (isAlreadyInBasket(basket, id)) {
+      dispatch(setBasketItemVolume({id, volume}));
+    }
+    dispatch(setTotalPrice(id));
     dispatch(setTotalSum());
   }
 
@@ -39,7 +55,7 @@ function ModalProduct() {
       <div className={styles.container}>
         <img src={coffee} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>
-        <VolumeRadioGroup id={id} range={volumeRange}/>
+        <VolumeRadioGroup volume={volume} range={volumeRange} onClick={(volume) => handleVolumeButtonClick(volume)}/>
         <p className={styles.description}>{description}</p>
         <div className={styles.bottom}>
           <p className={styles.cost}>{totalPrice} р</p>

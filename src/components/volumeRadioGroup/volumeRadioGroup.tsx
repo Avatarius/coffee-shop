@@ -1,27 +1,13 @@
 import styles from "./volumeRadioGroup.module.scss";
-import { useDispatch, useSelector } from "../../services/store";
-import { selectCurrentProduct, setCurrentProductVolume } from "../../services/slices/products";
 import clsx from "clsx";
-import { selectProductList } from "../../services/slices/basket";
-import { isAlreadyInBasket } from "../../utils/utils";
 
 interface IVolumeRadioGroupProps {
-  id: string;
+  volume: number;
   range: number[];
+  onClick?: (volume: number) => void;
 }
 
-function VolumeRadioGroup({ id, range }: IVolumeRadioGroupProps) {
-  const dispatch = useDispatch();
-  const currentProduct = useSelector(selectCurrentProduct);
-  const basket = useSelector(selectProductList);
-
-  function handleButtonClick(volume: number) {
-    dispatch(setCurrentProductVolume(volume));
-    if (isAlreadyInBasket(basket, id)) {
-      // dispatch();
-    }
-  }
-
+function VolumeRadioGroup({ volume, range, onClick }: IVolumeRadioGroupProps) {
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>Объем</h4>
@@ -30,9 +16,11 @@ function VolumeRadioGroup({ id, range }: IVolumeRadioGroupProps) {
           <button
             className={clsx({
               [styles.button]: true,
-              [styles.button_active]: currentProduct?.volume === item,
+              [styles.button_active]: volume === item,
             })}
-            onClick={() => handleButtonClick(item)}
+            onClick={() => {
+              if (onClick) onClick(item);
+            }}
             key={crypto.randomUUID()}
           >
             {item}
