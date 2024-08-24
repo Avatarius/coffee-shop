@@ -1,0 +1,44 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block-end: 20px;
+}
+
+
+.product {
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: 120px 120px min-content 1fr;
+  align-items: center;
+  gap: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #2c2c2c;
+}
+
+.img {
+  border-radius: 15px;
+  inline-size: 100%;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.cost {
+  justify-self: end;
+}
+
+.remove {
+  margin: 0;
+  margin-inline-start: auto;
+  border: none;
+  padding: 0;
+  color: inherit;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none;
+}
