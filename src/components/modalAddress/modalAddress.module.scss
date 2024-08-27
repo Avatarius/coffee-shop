@@ -1,0 +1,27 @@
+.container {
+  min-inline-size: 450px;
+}
+
+.title {
+  margin-block-end: 15px;
+  font-size: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 20px;
+}
+
+.button {
+  display: block;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 12px;
+  color: inherit;
+  font-size: 20px;
+  background-color: var(--button-color, #f28123);
+  cursor: pointer;
+  appearance: none;
+}

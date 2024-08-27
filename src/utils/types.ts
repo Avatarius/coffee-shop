@@ -28,7 +28,8 @@ enum ModalType {
   None = 0,
   Product,
   Review,
-  Basket
+  Basket,
+  Address
 }
 
 export {ModalType};

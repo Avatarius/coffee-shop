@@ -28,6 +28,7 @@ import { ModalReview } from "../modalReview/modalReview";
 import { openModal, selectModalType } from "../../services/slices/modal";
 import { ModalBasket } from "../modalBasket/modalBasket";
 import { products } from "../../data/products";
+import { ModalAddress } from "../modalAddress/modalAddress";
 
 function App() {
   const dispatch = useDispatch();
@@ -81,10 +82,7 @@ function App() {
   function renderModal() {
     switch (modalType) {
       case ModalType.Product:
-        return (
-          <ModalProduct
-          />
-        );
+        return <ModalProduct />;
       case ModalType.Review:
         return (
           <ModalReview
@@ -94,7 +92,9 @@ function App() {
           />
         );
       case ModalType.Basket:
-        return <ModalBasket/>;
+        return <ModalBasket />;
+      case ModalType.Address:
+        return <ModalAddress/>;
       default:
         return <Modal />;
     }
