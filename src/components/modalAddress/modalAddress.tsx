@@ -15,7 +15,7 @@ function ModalAddress() {
         <h3 className={styles.title}>Информация о доставке</h3>
         <form className={styles.form} onSubmit={handleSubmit}>
           <Textfield name="name" label="Имя"/>
-          <Textfield name="phone" label="Телефон"/>
+          <Textfield name="phone" label="Телефон" onlyNumbers/>
           <Textfield name="address" label="Адрес"/>
           <button type="submit" className={styles.button}>Оформить заказ</button>
         </form>
