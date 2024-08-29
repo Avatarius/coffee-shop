@@ -1,8 +1,7 @@
 .container {
   position: relative;
   margin-inline: auto;
-  padding-inline: 40px;
-  inline-size: 1180px;
+  inline-size: 1231px;
   background-color: rgba(0 0 0 / 0.2);
   border-radius: 15px;
   padding: 35px 85px 0;
@@ -11,13 +10,11 @@
 .slider {
   position: relative;
   overflow: hidden;
-  inline-size: 100%;
 }
 
 .list {
   display: flex;
   gap: 20px;
-  inline-size: 100%;
 }
 
 .item {
