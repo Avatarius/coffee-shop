@@ -2,10 +2,21 @@
   min-inline-size: 450px;
 }
 
-.title {
-  margin-block-end: 15px;
-  font-size: 24px;
+.header {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  grid-template-areas: 'button title .';
+  justify-content: center;
+  align-items: center;
+  margin-block-end: 20px;
 }
+
+.header__title {
+  font-size: 24px;
+  grid-area: title;
+  text-align: center;
+}
+
 
 .form {
   display: flex;

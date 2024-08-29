@@ -11,6 +11,8 @@ import {
   selectIsVisible,
 } from "../../services/slices/modal";
 import { useSelector } from "react-redux";
+import { IconType } from "../../utils/types";
+import { Icon } from "../icon/icon";
 
 const modalRoot = document.getElementById("modal");
 
@@ -36,25 +38,7 @@ function Modal({ children }: IModalProps) {
         onClick={(event: React.MouseEvent) => event.stopPropagation()}
       >
         {children}
-        <button
-          className={styles.button}
-          onClick={() => dispatch(closeModal())}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="-0.5 0 25 25"
-          >
-            <g
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-            >
-              <path d="m3 21.32 18-18M3 3.32l18 18" />
-            </g>
-          </svg>
-        </button>
+        <Icon type={IconType.Close} onClick={() => dispatch(closeModal())} additionalClasses={styles.button}/>
       </div>
       <div className={styles.overlay}></div>
     </div>,

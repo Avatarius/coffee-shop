@@ -1,6 +1,8 @@
 import { ReactNode, useState } from "react";
 import styles from "./carousel.module.scss";
 import clsx from "clsx";
+import { Icon } from "../icon/icon";
+import { IconType } from "../../utils/types";
 
 interface ICarouselProps {
   cards: ReactNode[];
@@ -18,6 +20,7 @@ function Carousel({ cards }: ICarouselProps) {
     cards.at(1),
   ].map((card, index) => (
     <li
+      key={index}
       className={clsx({
         [styles.item]: true,
         [styles.item_active]:
@@ -25,7 +28,6 @@ function Carousel({ cards }: ICarouselProps) {
           index === currentIndex - (cards.length - 1) ||
           index === currentIndex + (cards.length + 1),
       })}
-      key={crypto.randomUUID()}
     >
       {card}
     </li>
@@ -59,31 +61,16 @@ function Carousel({ cards }: ICarouselProps) {
 
   return (
     <section className={styles.container}>
-      <button
-        className={clsx({ [styles.button]: true, [styles.button_left]: true })}
+      <Icon
+        type={IconType.LeftArrow}
         onClick={() => handleSlide(true)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1024 1024"
-          fill="currentColor"
-        >
-          <path d="M768 903.232 717.568 960 256 512 717.568 64 768 120.768 364.928 512z" />
-        </svg>
-      </button>
-      <button
-        className={clsx({ [styles.button]: true, [styles.button_right]: true })}
+        additionalClasses={clsx(styles.button, styles.button_left)}
+      />
+      <Icon
+        type={IconType.RightArrow}
         onClick={() => handleSlide(false)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          transform="scale(-1 1)"
-          viewBox="0 0 1024 1024"
-          fill="currentColor"
-        >
-          <path d="M768 903.232 717.568 960 256 512 717.568 64 768 120.768 364.928 512z" />
-        </svg>
-      </button>
+        additionalClasses={clsx(styles.button, styles.button_right)}
+      />
       <div className={styles.slider}>
         <ul
           className={styles.list}

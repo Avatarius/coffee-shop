@@ -32,6 +32,15 @@ enum ModalType {
   Address
 }
 
-export {ModalType};
+enum IconType {
+  Back,
+  Remove,
+  Basket,
+  Close,
+  LeftArrow,
+  RightArrow
+}
+
+export {ModalType, IconType};
 
 export type { IProduct, IBasketItem, IReview, IModalData };

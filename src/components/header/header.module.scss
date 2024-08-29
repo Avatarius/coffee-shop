@@ -10,20 +10,14 @@
 .basket {
   grid-area: button;
   justify-self: end;
-  border: none;
-  padding: 0;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
-  appearance: none;
-  position: relative;
+  align-self: center;
 }
 
 .count__container {
   position: absolute;
   background-color: var(--button-color, #f28123);
-  inset-inline-start: calc(100% - 13px);
-  inset-block-start: calc(100% - 20px);
+  inset-inline-start: calc(100% - 10px);
+  inset-block-start: calc(100% - 12px);
   inline-size: 18px;
   block-size: 18px;
   display: flex;
