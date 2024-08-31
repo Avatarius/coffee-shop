@@ -24,6 +24,20 @@ interface IModalData {
   type: ModalType;
 }
 
+interface IOrder {
+  productList: IBasketItem[];
+  totalSum: number;
+  name: string;
+  tel: string;
+  address: string;
+}
+
+interface IAddressForm {
+  name: string;
+  tel: string;
+  address: string;
+}
+
 enum ModalType {
   None = 0,
   Product,
@@ -43,4 +57,4 @@ enum IconType {
 
 export {ModalType, IconType};
 
-export type { IProduct, IBasketItem, IReview, IModalData };
+export type { IProduct, IBasketItem, IReview, IModalData, IOrder,  IAddressForm};

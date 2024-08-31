@@ -1,5 +1,6 @@
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../services/filrebase";
+import { IOrder } from "./types";
 
 async function getCollection<T>(collectionName: string) {
   const list: T[] = [];
@@ -11,4 +12,15 @@ async function getCollection<T>(collectionName: string) {
   return list;
 }
 
-export {getCollection};
+/* async function createOrder() {
+  // await setDoc(doc(db, 'orders', 'test'), {});
+  const docRef = await addDoc(collection(db, 'orders'), {});
+  return docRef;
+} */
+
+async function addDocument(order: IOrder) {
+  const docRef = await addDoc(collection(db, 'orders'), order);
+  return docRef;
+}
+
+export {getCollection, addDocument};

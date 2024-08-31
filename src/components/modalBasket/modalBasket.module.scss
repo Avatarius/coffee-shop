@@ -31,6 +31,10 @@
   display: block;
 }
 
+.button_disabled {
+  background-color: var(--button-disabled-color, rgba(112, 112, 112));
+}
+
 
 .totalPrice {
   font-size: 22px;
