@@ -19,7 +19,7 @@ function ModalAddress() {
     tel: "",
     address: "",
   });
-  const isButtonDisabled = Object.values(formData).some(item => item === '');
+  const isButtonDisabled = Object.values(formData).some((item) => item === "");
 
   const dispatch = useDispatch();
   const basket = useSelector(selectProductList);
@@ -31,9 +31,9 @@ function ModalAddress() {
       postOrder({
         productList: basket,
         totalSum: totalSum,
-        name: "name",
-        tel: "123456789",
-        address: "address",
+        name: formData.name,
+        tel: formData.tel,
+        address: formData.address,
       })
     );
   }
