@@ -12,12 +12,6 @@ async function getCollection<T>(collectionName: string) {
   return list;
 }
 
-/* async function createOrder() {
-  // await setDoc(doc(db, 'orders', 'test'), {});
-  const docRef = await addDoc(collection(db, 'orders'), {});
-  return docRef;
-} */
-
 async function addDocument(order: IOrder) {
   const docRef = await addDoc(collection(db, 'orders'), order);
   return docRef;

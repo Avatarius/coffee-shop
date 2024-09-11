@@ -7,6 +7,7 @@ interface IProduct {
   description: string;
   isPopular?: boolean;
   volumeRange: number[];
+  image: string;
 }
 
 interface IBasketItem extends IProduct {
@@ -43,7 +44,8 @@ enum ModalType {
   Product,
   Review,
   Basket,
-  Address
+  Address,
+  Success
 }
 
 enum IconType {
@@ -52,7 +54,8 @@ enum IconType {
   Basket,
   Close,
   LeftArrow,
-  RightArrow
+  RightArrow,
+  Success
 }
 
 export {ModalType, IconType};

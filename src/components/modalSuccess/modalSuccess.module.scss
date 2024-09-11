@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* .icon {
+  border: 2px solid #fff;
+  border-radius: 100%;
+
+}
+
+.icon svg {
+  padding: 45px;
+}
+ */
+.text {
+  font-size: 25px;
+}

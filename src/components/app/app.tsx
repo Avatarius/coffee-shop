@@ -29,6 +29,7 @@ import { openModal, selectModalType } from "../../services/slices/modal";
 import { ModalBasket } from "../modalBasket/modalBasket";
 import { products } from "../../data/products";
 import { ModalAddress } from "../modalAddress/modalAddress";
+import { ModalSuccess } from "../modalSuccess/modalSuccess";
 
 function App() {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ function App() {
     <CardProduct
       title={product.name}
       cost={product.price}
-      volume={product.volume}
+      image={product.image}
       onClick={() => handleClickProductCard(product)}
       key={product.id}
     />
@@ -65,7 +66,7 @@ function App() {
     <CardProduct
       title={product.name}
       cost={product.price}
-      volume={product.volume}
+      image={product.image}
       onClick={() => handleClickProductCard(product)}
       key={product.id}
     />
@@ -95,6 +96,8 @@ function App() {
         return <ModalBasket />;
       case ModalType.Address:
         return <ModalAddress/>;
+      case ModalType.Success:
+        return <ModalSuccess/>;
       default:
         return <Modal />;
     }

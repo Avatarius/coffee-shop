@@ -3,7 +3,13 @@
   background-color: #000000;
   cursor: pointer;
   min-inline-size: 300px;
+  transition: scale 0.1s ease-in-out;
 }
+
+.container:hover {
+  scale: 1.05;
+}
+
 .img {
   border-start-start-radius: inherit;
   border-start-end-radius: inherit;

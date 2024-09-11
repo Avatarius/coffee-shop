@@ -25,6 +25,10 @@ const basketSlice = createSlice({
         (product) => product.id !== action.payload
       );
     },
+    clearBasket: (state) => {
+      state.productList = [];
+      state.totalSum = 0;
+    },
     setBasketItemVolume: (state, action) => {
       const { id, volume } = action.payload;
       const product = state.productList.find((item) => item.id === id);
@@ -70,6 +74,7 @@ const basketSlice = createSlice({
 const {
   addToBasket,
   removeFromBasket,
+  clearBasket,
   setBasketItemCount,
   setBasketItemVolume,
   setTotalPrice,
@@ -82,6 +87,7 @@ export {
   basketSlice,
   addToBasket,
   removeFromBasket,
+  clearBasket,
   setBasketItemCount,
   setBasketItemVolume,
   setTotalPrice,

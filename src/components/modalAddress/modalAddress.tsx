@@ -3,15 +3,17 @@ import { Modal } from "../modal/modal";
 import styles from "./modalAddress.module.scss";
 import { Textfield } from "../textfield/textfield";
 import { Icon } from "../icon/icon";
-import { IAddressForm, IconType } from "../../utils/types";
+import { IAddressForm, IconType, ModalType } from "../../utils/types";
 import { useDispatch } from "../../services/store";
 import { postOrder } from "../../services/thunk/order";
 import { useSelector } from "react-redux";
 import {
+  clearBasket,
   selectProductList,
   selectTotalSum,
 } from "../../services/slices/basket";
 import clsx from "clsx";
+import { openModal } from "../../services/slices/modal";
 
 function ModalAddress() {
   const [formData, setFormData] = useState<IAddressForm>({
@@ -27,7 +29,7 @@ function ModalAddress() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    dispatch(
+    /* dispatch(
       postOrder({
         productList: basket,
         totalSum: totalSum,
@@ -35,7 +37,10 @@ function ModalAddress() {
         tel: formData.tel,
         address: formData.address,
       })
-    );
+    ); */
+    dispatch(clearBasket());
+    dispatch(openModal(ModalType.Success));
+
   }
 
   return (

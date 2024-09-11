@@ -37,6 +37,7 @@ const productsSlice = createSlice({
       state.products = action.payload.map((product) => ({
         ...product,
         totalPrice: product.price,
+        image: product.image ? product.image : ''
       }));
     });
   },

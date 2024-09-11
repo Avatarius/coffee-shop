@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   [productsSlice.name]: productsSlice.reducer,
   [reviewsSlice.name]: reviewsSlice.reducer,
   [modalSlice.name]: modalSlice.reducer,
-  [basketSlice.name]: basketSlice.reducer
+  [basketSlice.name]: basketSlice.reducer,
 });
 
 const store = configureStore({

@@ -18,9 +18,10 @@ const modalRoot = document.getElementById("modal");
 
 interface IModalProps {
   children?: ReactNode;
+  padding?: number;
 }
 
-function Modal({ children }: IModalProps) {
+function Modal({ children, padding }: IModalProps) {
   const dispatch = useDispatch();
   const isVisible = useSelector(selectIsVisible);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ function Modal({ children }: IModalProps) {
     >
       <div
         className={styles.modal}
+        style={{padding: (padding !== undefined)  ? padding : 30}}
         ref={modalRef}
         onClick={(event: React.MouseEvent) => event.stopPropagation()}
       >

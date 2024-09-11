@@ -26,7 +26,7 @@ function ModalProduct() {
       ? basket.find((item) => item.id === currentProduct.id)
       : currentProduct
   ) as IProduct;
-  const { id, name, totalPrice, description, volume, volumeRange } = product;
+  const { id, name, totalPrice, description, volume, volumeRange, image } = product;
 
   const dispatch = useDispatch();
 
@@ -50,9 +50,9 @@ function ModalProduct() {
   }
 
   return (
-    <Modal>
+    <Modal padding={0}>
       <div className={styles.container}>
-        <img src={coffee} alt="Изображение товара" className={styles.img} />
+        <img src={image} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>
         <VolumeRadioGroup volume={volume} range={volumeRange} onClick={(volume) => handleVolumeButtonClick(volume)}/>
         <p className={styles.description}>{description}</p>
