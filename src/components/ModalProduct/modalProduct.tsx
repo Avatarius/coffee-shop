@@ -51,7 +51,7 @@ function ModalProduct() {
 
   return (
     <Modal padding={0}>
-      <div className={styles.container}>
+      {/* <div className={styles.container}>
         <img src={image} alt="Изображение товара" className={styles.img} />
         <h3 className={styles.title}>{name}</h3>
         <VolumeRadioGroup volume={volume} range={volumeRange} onClick={(volume) => handleVolumeButtonClick(volume)}/>
@@ -64,6 +64,23 @@ function ModalProduct() {
           >
             {isAlreadyInBasket(basket, id) ? "✓" : "+"}
           </button>
+        </div>
+      </div> */}
+      <div className={styles.container}>
+        <img src={image} alt="Изображение товара" className={styles.img} />
+        <div className={styles.info}>
+          <h3 className={styles.title}>{name}</h3>
+          <VolumeRadioGroup volume={volume} range={volumeRange} onClick={(volume) => handleVolumeButtonClick(volume)}/>
+          <p className={styles.description}>{description}</p>
+          <div className={styles.bottom}>
+          <p className={styles.cost}>{totalPrice} р</p>
+          <button
+            className={styles.button}
+            onClick={() => handleAddButtonClick()}
+          >
+            {isAlreadyInBasket(basket, id) ? "✓" : "+"}
+          </button>
+        </div>
         </div>
       </div>
     </Modal>

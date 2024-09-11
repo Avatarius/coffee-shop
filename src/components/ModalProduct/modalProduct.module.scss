@@ -1,15 +1,24 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   border-radius: inherit;
-  max-inline-size: 400px;
+  max-inline-size: 450px;
 }
 
 .img {
-  margin-block-end: 20px;
-  border-radius: 10px;
+  display: block;
+  // margin-block-end: 20px;
+  // border-radius: 10px;
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
   object-fit: cover;
   inline-size: 100%;
+}
+
+.info {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
