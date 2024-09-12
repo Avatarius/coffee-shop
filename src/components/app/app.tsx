@@ -75,6 +75,7 @@ function App() {
     <CardReview
       name={review.name}
       text={review.text}
+      image={review.image}
       onClick={() => handleClickReviewCard(review)}
       key={review.id}
     />
@@ -85,19 +86,13 @@ function App() {
       case ModalType.Product:
         return <ModalProduct />;
       case ModalType.Review:
-        return (
-          <ModalReview
-            id={currentReview?.id ?? ""}
-            name={currentReview?.name ?? ""}
-            text={currentReview?.text ?? ""}
-          />
-        );
+        return <ModalReview />;
       case ModalType.Basket:
         return <ModalBasket />;
       case ModalType.Address:
-        return <ModalAddress/>;
+        return <ModalAddress />;
       case ModalType.Success:
-        return <ModalSuccess/>;
+        return <ModalSuccess />;
       default:
         return <Modal />;
     }

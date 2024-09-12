@@ -2,17 +2,21 @@ import { IModalProps, Modal } from "../modal/modal";
 import userAvatar from "../../images/user.jpg";
 import styles from "./modalReview.module.scss";
 import { IReview } from "../../utils/types";
+import { Image } from "../image/image";
+import { useSelector } from "react-redux";
+import { selectCurrentReview } from "../../services/slices/reviews";
 
-type IModalReviewProps = IModalProps & IReview;
-
-function ModalReview(props: IModalReviewProps) {
-  const { name, text } = props;
+function ModalReview() {
+  const currentReview = useSelector(selectCurrentReview);
+  if (!currentReview) return;
+  const { name, text, image } = currentReview;
   return (
     <Modal>
       <div className={styles.container}>
-        <img
-          src={userAvatar}
-          alt="Аватар пользователя"
+        <Image
+          src={image}
+          alt={name}
+          fallbackSrc={userAvatar}
           className={styles.img}
         />
         <h3 className={styles.title}>{name}</h3>

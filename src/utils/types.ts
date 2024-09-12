@@ -18,6 +18,7 @@ interface IReview {
   id: string;
   name: string,
   text: string;
+  image: string;
 }
 
 interface IModalData {

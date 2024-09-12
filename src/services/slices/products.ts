@@ -23,7 +23,11 @@ const productsSlice = createSlice({
     setCurrentProductVolume: (state, action) => {
       if (state.currentProduct) {
         state.currentProduct.volume = action.payload;
-        state.currentProduct.totalPrice = calculateTotalPrice(state.currentProduct.price, state .currentProduct.volumeRange[0], action.payload);
+        state.currentProduct.totalPrice = calculateTotalPrice(
+          state.currentProduct.price,
+          state.currentProduct.volumeRange[0],
+          action.payload
+        );
       }
     },
   },
@@ -37,17 +41,14 @@ const productsSlice = createSlice({
       state.products = action.payload.map((product) => ({
         ...product,
         totalPrice: product.price,
-        image: product.image ? product.image : ''
+        image: product.image ? product.image : "",
       }));
     });
   },
 });
 
 const productsReducer = productsSlice.reducer;
-const {
-  setCurrentProduct,
-  setCurrentProductVolume,
-} = productsSlice.actions;
+const { setCurrentProduct, setCurrentProductVolume } = productsSlice.actions;
 const { selectProducts, selectPopular, selectCurrentProduct } =
   productsSlice.selectors;
 

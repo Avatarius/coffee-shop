@@ -26,7 +26,10 @@ const reviewsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchReviews.fulfilled, (state, action) => {
-      state.reviews = action.payload;
+      state.reviews = action.payload.map((review) => ({
+        ...review,
+        image: review.image ? review.image : "",
+      }));
     });
   },
 });
