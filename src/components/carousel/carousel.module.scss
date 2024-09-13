@@ -4,7 +4,7 @@
   inline-size: 1231px;
   background-color: rgba(0 0 0 / 0.2);
   border-radius: 15px;
-  padding: 35px 85px 0;
+  padding: 35px 85px 15px;
 }
 
 .slider {
@@ -18,7 +18,7 @@
 }
 
 .item {
-  translate: 0 50%;
+  translate: 0 70%;
   transition: translate 0.35s ease-in-out;
 }
 
