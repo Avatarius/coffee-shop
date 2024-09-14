@@ -1,25 +1,28 @@
 .container {
   position: relative;
-  margin-inline: auto;
-  inline-size: 1231px;
-  background-color: rgba(0 0 0 / 0.2);
-  border-radius: 15px;
-  padding: 35px 85px 15px;
 }
 
 .slider {
-  position: relative;
+  margin-inline: auto;
+  padding-block: 20px;
   overflow: hidden;
+}
+
+.slider__container {
+  position: relative;
+  margin-inline: auto;
+  border-radius: 15px;
+  background-color: rgba(0 0 0 / 0.2);
 }
 
 .list {
   display: flex;
-  gap: 20px;
+  padding-inline: 20px;
 }
 
 .item {
-  translate: 0 70%;
   transition: translate 0.35s ease-in-out;
+  translate: 0 70%;
 }
 
 .item_active {

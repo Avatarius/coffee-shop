@@ -7,10 +7,14 @@ import { IconType } from "../../utils/types";
 interface ICarouselProps {
   cards: ReactNode[];
 }
-
 function Carousel({ cards }: ICarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(2);
   const [transition, setTransition] = useState(true);
+
+  const cardWidth = 340; // temp
+  const gap = 20; // temp
+  const containerSize = cardWidth * 3 + gap * 4;
+  const translateValue = (-cardWidth - gap) * currentIndex;
 
   const listItems = [
     cards.at(-2),
@@ -61,26 +65,35 @@ function Carousel({ cards }: ICarouselProps) {
 
   return (
     <section className={styles.container}>
-      <Icon
-        type={IconType.LeftArrow}
-        onClick={() => handleSlide(true)}
-        additionalClasses={clsx(styles.button, styles.button_left)}
-      />
-      <Icon
-        type={IconType.RightArrow}
-        onClick={() => handleSlide(false)}
-        additionalClasses={clsx(styles.button, styles.button_right)}
-      />
-      <div className={styles.slider}>
-        <ul
-          className={styles.list}
-          style={{
-            translate: `calc(-33.9% * ${currentIndex}) 0`,
-            transition: transition ? "translate 0.2s linear" : "none",
-          }}
+      <div
+        className={styles.slider__container}
+        style={{ inlineSize: containerSize + 100 }}
+      >
+        <Icon
+          type={IconType.LeftArrow}
+          onClick={() => handleSlide(true)}
+          additionalClasses={clsx(styles.button, styles.button_left)}
+        />
+        <Icon
+          type={IconType.RightArrow}
+          onClick={() => handleSlide(false)}
+          additionalClasses={clsx(styles.button, styles.button_right)}
+        />
+        <div
+          className={styles.slider}
+          style={{ inlineSize: `calc(100% - 100px)` }}
         >
-          {listItems}
-        </ul>
+          <ul
+            className={styles.list}
+            style={{
+              translate: translateValue,
+              transition: transition ? "translate 0.2s linear" : "none",
+              gap: gap
+            }}
+          >
+            {listItems}
+          </ul>
+        </div>
       </div>
     </section>
   );
