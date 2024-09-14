@@ -6,13 +6,14 @@ import { IconType } from "../../utils/types";
 
 interface ICarouselProps {
   cards: ReactNode[];
+  cardWidth: number;
+  gap: number;
 }
-function Carousel({ cards }: ICarouselProps) {
+function Carousel(props: ICarouselProps) {
+  const {cards, cardWidth, gap} = props;
   const [currentIndex, setCurrentIndex] = useState(2);
   const [transition, setTransition] = useState(true);
 
-  const cardWidth = 340; // temp
-  const gap = 20; // temp
   const containerSize = cardWidth * 3 + gap * 4;
   const translateValue = (-cardWidth - gap) * currentIndex;
 

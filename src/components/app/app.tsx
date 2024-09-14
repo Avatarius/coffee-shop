@@ -108,7 +108,7 @@ function App() {
         <Splitter text="Меню" />
         <List cards={cardsMenu} />
         <Splitter text="Отзывы" />
-        <Carousel cards={cardsReviews} />
+        <Carousel cards={cardsReviews} cardWidth={340} gap={20}/>
       </main>
       <Footer />
     </>
