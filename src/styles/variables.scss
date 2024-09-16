@@ -1,6 +1,5 @@
 :root {
   --main-text-color: #fff;
-  --navigation-font-color: #fff8e8;
   --navigation-active-gradient: linear-gradient(
     145deg,
     rgba(223, 195, 157, 0.4) 0%,
@@ -10,6 +9,7 @@
     rgba(248, 228, 190, 0.4) 100%
   );
   --navigation-active-border-radius: 30px;
-  --button-color: #f28123;
+  --button-background-color: #f28123;
+  --button-text-color: #fff;
   --button-disabled-color: rgba(112, 112, 112);
 }

@@ -1,5 +1,6 @@
 import styles from "./volumeRadioGroup.module.scss";
 import clsx from "clsx";
+import { Button } from "../button/button";
 
 interface IVolumeRadioGroupProps {
   volume: number;
@@ -13,8 +14,9 @@ function VolumeRadioGroup({ volume, range, onClick }: IVolumeRadioGroupProps) {
       <h4 className={styles.title}>Объем</h4>
       <div className={styles.button__container}>
         {range.map((item) => (
-          <button
-            className={clsx({
+          <Button
+            content={item}
+            additionalClasses={clsx({
               [styles.button]: true,
               [styles.button_active]: volume === item,
             })}
@@ -22,9 +24,7 @@ function VolumeRadioGroup({ volume, range, onClick }: IVolumeRadioGroupProps) {
               if (onClick) onClick(item);
             }}
             key={crypto.randomUUID()}
-          >
-            {item}
-          </button>
+          />
         ))}
       </div>
     </div>

@@ -42,13 +42,8 @@
 }
 
 .button {
-  border: none;
-  border-radius: 10px;
-  color: inherit;
-  font-size: 30px;
-  background-color: var(--button-color, #f28123);
-  cursor: pointer;
-  appearance: none;
   min-inline-size: 100px;
-  min-block-size: 40px;
+  // min-block-size: 40px;
+  font-size: 25px;
+  font-family: monospace;
 }

@@ -1,7 +1,6 @@
 import { Button } from "../button/button";
 import styles from "./hero.module.scss";
 import { Header } from "../header/header";
-import { Navigation } from "../navigation/navigation";
 
 interface IHero {
 
@@ -22,7 +21,7 @@ function Hero() {
             историю, начиная с зерна и заканчивая божественным ароматом в вашей
             чашке.
           </p>
-          <Button text="Заказать"/>
+          <Button content="Заказать"/>
         </div>
       </div>
     </section>

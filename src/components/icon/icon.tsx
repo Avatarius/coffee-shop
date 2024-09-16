@@ -27,7 +27,7 @@ function Icon(props: IIconProps) {
       onClick={handleClick}
     >
       {children}
-      <svg viewBox={viewBox} width={size} fill="#fff">
+      <svg viewBox={viewBox} width={size} fill="#fff" stroke="#fff">
         {path}
       </svg>
     </button>

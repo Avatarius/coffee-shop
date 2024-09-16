@@ -56,6 +56,7 @@ enum IconType {
   Close,
   LeftArrow,
   RightArrow,
+  Plus,
   Success
 }
 

@@ -16,8 +16,10 @@ import {
   setCurrentProductVolume,
 } from "../../services/slices/products";
 import { isAlreadyInBasket } from "../../utils/utils";
-import { IProduct } from "../../utils/types";
+import { IconType, IProduct } from "../../utils/types";
 import { Image } from "../image/image";
+import { Button } from "../button/button";
+import { Icon } from "../icon/icon";
 
 function ModalProduct() {
   const currentProduct = useSelector(selectCurrentProduct);
@@ -73,12 +75,7 @@ function ModalProduct() {
           <p className={styles.description}>{description}</p>
           <div className={styles.bottom}>
             <p className={styles.cost}>{totalPrice} р</p>
-            <button
-              className={styles.button}
-              onClick={() => handleAddButtonClick()}
-            >
-              {isAlreadyInBasket(basket, id) ? "✓" : "+"}
-            </button>
+            <Button content={isAlreadyInBasket(basket, id) ? '✓' : '+'} onClick={() => handleAddButtonClick()} additionalClasses={styles.button}/>
           </div>
         </div>
       </div>

@@ -79,7 +79,22 @@ const iconData = {
     viewBox: "0 0 78.369 78.369",
     size: 350,
   },
+  [IconType.Plus]: {
+    path: (
+      <>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6v12M6 12h12"
+        />
+      </>
+    ),
+    viewBox: "0 0 24 24",
+    size: 50,
+  },
 };
-
+{
+  /* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M0 0h24v24H0z"/><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg> */
+}
 
 export { iconData };

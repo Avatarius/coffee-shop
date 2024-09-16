@@ -7,7 +7,7 @@ import { CardReview } from "../cardReview/cardReview";
 import { Footer } from "../footer/footer";
 import { useDispatch } from "../../services/store";
 import { fetchProducts } from "../../services/thunk/products";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "../../services/store";
 import {
   selectCurrentProduct,
@@ -39,6 +39,7 @@ function App() {
     dispatch(fetchReviews());
   }, []);
 
+
   const modalType = useSelector(selectModalType);
 
   const currentReview = useSelector(selectCurrentReview);
@@ -69,6 +70,7 @@ function App() {
       image={product.image}
       onClick={() => handleClickProductCard(product)}
       key={product.id}
+
     />
   ));
   const cardsReviews = useSelector(selectReviews).map((review) => (

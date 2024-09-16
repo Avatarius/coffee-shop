@@ -15,21 +15,16 @@
 
 
 .button {
-  display: block;
   font-size: 27px;
-  appearance: none;
   background-color: gray;
-  border: none;
-  color: inherit;
-  border-radius: 8px;
   padding: 5px 10px;
   cursor: pointer;
 }
 
 .button_active {
-  background-color: var(--button-color, #f28123);
+  background-color: var(--button-background-color, #f28123);
 }
 
 .button:hover {
-  background-color: var(--button-color, #f28123);
+  background-color: var(--button-background-color, #f28123);
 }

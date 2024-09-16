@@ -15,7 +15,7 @@
 
 .count__container {
   position: absolute;
-  background-color: var(--button-color, #f28123);
+  background-color: var(--button-background-color, #f28123);
   inset-inline-start: calc(100% - 10px);
   inset-block-start: calc(100% - 12px);
   inline-size: 18px;

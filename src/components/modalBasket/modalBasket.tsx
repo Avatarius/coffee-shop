@@ -9,6 +9,7 @@ import { BasketItem } from "../basketItem/basketItem";
 import { openModal, selectModalType } from "../../services/slices/modal";
 import { ModalType } from "../../utils/types";
 import clsx from "clsx";
+import { Button } from "../button/button";
 
 function ModalBasket() {
   const basket = useSelector(selectProductList);
@@ -26,16 +27,15 @@ function ModalBasket() {
         <p className={styles.totalPrice}>
           Общая стоимость: {useSelector(selectTotalSum)}р
         </p>
-        <button
-          className={clsx(
+        <Button
+          content={"Далее"}
+          additionalClasses={clsx(
             styles.button,
             isButtonDisabled && styles.button_disabled
           )}
           onClick={() => dispatch(openModal(ModalType.Address))}
           disabled={isButtonDisabled}
-        >
-          Далее
-        </button>
+        />
       </div>
     </Modal>
   );

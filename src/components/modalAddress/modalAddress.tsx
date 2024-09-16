@@ -14,6 +14,7 @@ import {
 } from "../../services/slices/basket";
 import clsx from "clsx";
 import { openModal } from "../../services/slices/modal";
+import { Button } from "../button/button";
 
 function ModalAddress() {
   const [formData, setFormData] = useState<IAddressForm>({
@@ -40,7 +41,6 @@ function ModalAddress() {
     ); */
     dispatch(clearBasket());
     dispatch(openModal(ModalType.Success));
-
   }
 
   return (
@@ -70,16 +70,14 @@ function ModalAddress() {
             formData={formData}
             setFormData={setFormData}
           />
-          <button
-            type="submit"
-            className={clsx(
+          <Button
+            content={"Оформить заказ"}
+            additionalClasses={clsx(
               styles.button,
               isButtonDisabled && styles.button_disabled
             )}
             disabled={isButtonDisabled}
-          >
-            Оформить заказ
-          </button>
+          />
         </form>
       </div>
     </Modal>
