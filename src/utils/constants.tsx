@@ -83,18 +83,31 @@ const iconData = {
     path: (
       <>
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M12 6v12M6 12h12"
         />
       </>
     ),
     viewBox: "0 0 24 24",
-    size: 50,
+    size: 35,
+  },
+  [IconType.Tick]: {
+    path: (
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1"
+        d="M3.7 14.3 9.6 19 20.3 5"
+      />
+    ),
+    viewBox: "0 0 24 24",
+    size: 30,
   },
 };
 {
-  /* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M0 0h24v24H0z"/><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/></svg> */
 }
 
 export { iconData };
