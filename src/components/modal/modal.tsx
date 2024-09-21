@@ -39,8 +39,6 @@ function Modal({ children, padding }: IModalProps) {
           content={<Svg type={IconType.Close} />}
           onClick={() => dispatch(closeModal())}
           additionalClasses={styles.button}
-          paddingInline={0}
-          paddingBlock={0}
           transparent
         />
       </div>

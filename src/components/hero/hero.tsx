@@ -21,7 +21,7 @@ function Hero() {
             историю, начиная с зерна и заканчивая божественным ароматом в вашей
             чашке.
           </p>
-          <Button content="Заказать"/>
+          <Button content="Заказать" paddingInline={12} paddingBlock={8}/>
         </div>
       </div>
     </section>

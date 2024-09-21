@@ -47,7 +47,7 @@ function ModalAddress() {
     <Modal>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Button content={<Svg type={IconType.Back}/>} paddingInline={0} paddingBlock={0} transparent/>
+          <Button content={<Svg type={IconType.Back}/>} transparent/>
           <h3 className={styles.header__title}>Информация о доставке</h3>
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -77,6 +77,8 @@ function ModalAddress() {
               isButtonDisabled && styles.button_disabled
             )}
             disabled={isButtonDisabled}
+            paddingInline={12}
+            paddingBlock={8}
           />
         </form>
       </div>

@@ -75,16 +75,12 @@ function Carousel(props: ICarouselProps) {
           content={<Svg type={IconType.LeftArrow} />}
           onClick={() => handleSlide(true)}
           additionalClasses={clsx(styles.button, styles.button_left)}
-          paddingInline={0}
-          paddingBlock={0}
           transparent
         />
         <Button
           content={<Svg type={IconType.RightArrow} />}
           onClick={() => handleSlide(false)}
           additionalClasses={clsx(styles.button, styles.button_right)}
-          paddingInline={0}
-          paddingBlock={0}
           transparent
         />
         <div

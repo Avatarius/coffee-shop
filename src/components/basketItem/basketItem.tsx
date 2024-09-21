@@ -40,7 +40,7 @@ function BasketItem({item}: IBasketItemProps) {
         />
         <p className={styles.cost}>{item.totalPrice} р</p>
       </div>
-      <Button content={<Svg type={IconType.Remove}/>} onClick={() => handleRemoveItem(item.id)} paddingInline={0} paddingBlock={0} transparent/>
+      <Button content={<Svg type={IconType.Remove}/>} onClick={() => handleRemoveItem(item.id)} transparent/>
     </li>
   );
 }

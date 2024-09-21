@@ -24,8 +24,8 @@ function Button(props: IButtonProps) {
     transparent,
   } = props;
 
-  const paddingX = paddingInline ?? 8;
-  const paddingY = paddingBlock ?? 12;
+  const paddingX = paddingInline ?? 0;
+  const paddingY = paddingBlock ?? 0;
   const backgroundColor = transparent
     ? "transparent"
     : "var(--button-background-color, #f28123)";

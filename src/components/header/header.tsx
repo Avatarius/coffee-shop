@@ -23,8 +23,6 @@ function Header() {
           </>
         }
         additionalClasses={styles.basket}
-        paddingInline={0}
-        paddingBlock={0}
         transparent
         onClick={() => dispatch(openModal(ModalType.Basket))}
       />

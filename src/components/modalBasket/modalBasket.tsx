@@ -35,6 +35,8 @@ function ModalBasket() {
           )}
           onClick={() => dispatch(openModal(ModalType.Address))}
           disabled={isButtonDisabled}
+          paddingInline={12}
+          paddingBlock={8}
         />
       </div>
     </Modal>
