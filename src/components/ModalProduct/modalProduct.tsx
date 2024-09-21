@@ -19,7 +19,6 @@ import { isAlreadyInBasket } from "../../utils/utils";
 import { IconType, IProduct } from "../../utils/types";
 import { Image } from "../image/image";
 import { Button } from "../button/button";
-import { Icon } from "../icon/icon";
 import { Svg } from "../svg/svg";
 
 function ModalProduct() {

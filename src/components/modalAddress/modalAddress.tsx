@@ -2,7 +2,6 @@ import { FormEvent, useState } from "react";
 import { Modal } from "../modal/modal";
 import styles from "./modalAddress.module.scss";
 import { Textfield } from "../textfield/textfield";
-import { Icon } from "../icon/icon";
 import { IAddressForm, IconType, ModalType } from "../../utils/types";
 import { useDispatch } from "../../services/store";
 import { postOrder } from "../../services/thunk/order";
@@ -15,6 +14,7 @@ import {
 import clsx from "clsx";
 import { openModal } from "../../services/slices/modal";
 import { Button } from "../button/button";
+import { Svg } from "../svg/svg";
 
 function ModalAddress() {
   const [formData, setFormData] = useState<IAddressForm>({
@@ -47,7 +47,7 @@ function ModalAddress() {
     <Modal>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Icon type={IconType.Back} />
+          <Button content={<Svg type={IconType.Back}/>} paddingInline={0} paddingBlock={0} transparent/>
           <h3 className={styles.header__title}>Информация о доставке</h3>
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>

@@ -4,7 +4,8 @@ import { Counter } from '../counter/counter';
 import { IBasketItem, IconType } from '../../utils/types';
 import { useDispatch } from '../../services/store';
 import { removeFromBasket, setBasketItemCount, setTotalPrice, setTotalSum } from '../../services/slices/basket';
-import { Icon } from '../icon/icon';
+import { Button } from '../button/button';
+import { Svg } from '../svg/svg';
 
 interface IBasketItemProps {
   item: IBasketItem;
@@ -39,7 +40,7 @@ function BasketItem({item}: IBasketItemProps) {
         />
         <p className={styles.cost}>{item.totalPrice} р</p>
       </div>
-      <Icon type={IconType.Remove} onClick={() => handleRemoveItem(item.id)}/>
+      <Button content={<Svg type={IconType.Remove}/>} onClick={() => handleRemoveItem(item.id)} paddingInline={0} paddingBlock={0} transparent/>
     </li>
   );
 }

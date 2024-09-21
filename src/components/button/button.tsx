@@ -10,6 +10,7 @@ interface IButtonProps {
   disabled?: boolean;
   paddingInline?: number;
   paddingBlock?: number;
+  transparent?: boolean;
 }
 
 function Button(props: IButtonProps) {
@@ -20,10 +21,14 @@ function Button(props: IButtonProps) {
     disabled,
     paddingInline,
     paddingBlock,
+    transparent,
   } = props;
 
   const paddingX = paddingInline ?? 8;
   const paddingY = paddingBlock ?? 12;
+  const backgroundColor = transparent
+    ? "transparent"
+    : "var(--button-background-color, #f28123)";
 
   function handleClick() {
     if (onClick) {
@@ -38,7 +43,10 @@ function Button(props: IButtonProps) {
           ? clsx(styles.container, additionalClasses)
           : styles.container
       }
-      style={{ padding: `${paddingY}px ${paddingX}px` }}
+      style={{
+        padding: `${paddingY}px ${paddingX}px`,
+        backgroundColor: backgroundColor,
+      }}
       onClick={handleClick}
       disabled={disabled}
     >

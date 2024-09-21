@@ -1,8 +1,9 @@
 import { ReactNode, useState } from "react";
 import styles from "./carousel.module.scss";
 import clsx from "clsx";
-import { Icon } from "../icon/icon";
 import { IconType } from "../../utils/types";
+import { Button } from "../button/button";
+import { Svg } from "../svg/svg";
 
 interface ICarouselProps {
   cards: ReactNode[];
@@ -10,7 +11,7 @@ interface ICarouselProps {
   gap: number;
 }
 function Carousel(props: ICarouselProps) {
-  const {cards, cardWidth, gap} = props;
+  const { cards, cardWidth, gap } = props;
   const [currentIndex, setCurrentIndex] = useState(2);
   const [transition, setTransition] = useState(true);
 
@@ -70,15 +71,21 @@ function Carousel(props: ICarouselProps) {
         className={styles.slider__container}
         style={{ inlineSize: containerSize + 100 }}
       >
-        <Icon
-          type={IconType.LeftArrow}
+        <Button
+          content={<Svg type={IconType.LeftArrow} />}
           onClick={() => handleSlide(true)}
           additionalClasses={clsx(styles.button, styles.button_left)}
+          paddingInline={0}
+          paddingBlock={0}
+          transparent
         />
-        <Icon
-          type={IconType.RightArrow}
+        <Button
+          content={<Svg type={IconType.RightArrow} />}
           onClick={() => handleSlide(false)}
           additionalClasses={clsx(styles.button, styles.button_right)}
+          paddingInline={0}
+          paddingBlock={0}
+          transparent
         />
         <div
           className={styles.slider}
@@ -89,7 +96,7 @@ function Carousel(props: ICarouselProps) {
             style={{
               translate: translateValue,
               transition: transition ? "translate 0.2s linear" : "none",
-              gap: gap
+              gap: gap,
             }}
           >
             {listItems}

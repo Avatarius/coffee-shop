@@ -8,6 +8,7 @@
 }
 
 .basket {
+  position: relative;
   grid-area: button;
   justify-self: end;
   align-self: center;
@@ -15,16 +16,16 @@
 
 .count__container {
   position: absolute;
-  background-color: var(--button-background-color, #f28123);
-  inset-inline-start: calc(100% - 10px);
-  inset-block-start: calc(100% - 12px);
-  inline-size: 18px;
-  block-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 100%;
+  background-color: var(--button-background-color, #f28123);
   cursor: default;
+  inset-inline-start: calc(100% - 10px);
+  inset-block-start: calc(100% - 12px);
+  inline-size: 18px;
+  block-size: 18px;
 }
 
 .count__span {

@@ -1,12 +1,11 @@
 .container {
   border: none;
   border-radius: 10px;
-  // padding: 12px 20px;
   color: var(--button-text-color, #fff);
   font-family: inherit;
   font-size: 20px;
   text-transform: capitalize;
-  background-color: var(--button-background-color, #f28123);
+  // background-color: var(--button-background-color, #f28123);
   cursor: pointer;
   appearance: none;
 }

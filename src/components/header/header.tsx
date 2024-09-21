@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "../../services/store";
 import { openModal } from "../../services/slices/modal";
 import { IconType, ModalType } from "../../utils/types";
 import { selectProductListLength } from "../../services/slices/basket";
-import { Icon } from "../icon/icon";
+import { Button } from "../button/button";
+import { Svg } from "../svg/svg";
 
 function Header() {
   const dispatch = useDispatch();
@@ -12,15 +13,21 @@ function Header() {
   return (
     <header className={styles.header}>
       <Navigation />
-      <Icon
-        type={IconType.Basket}
-        onClick={() => dispatch(openModal(ModalType.Basket))}
+      <Button
+        content={
+          <>
+            <Svg type={IconType.Basket} />
+            <div className={styles.count__container}>
+              <span className={styles.count__span}>{basketLength}</span>
+            </div>
+          </>
+        }
         additionalClasses={styles.basket}
-      >
-        <div className={styles.count__container}>
-          <span className={styles.count__span}>{basketLength}</span>
-        </div>
-      </Icon>
+        paddingInline={0}
+        paddingBlock={0}
+        transparent
+        onClick={() => dispatch(openModal(ModalType.Basket))}
+      />
     </header>
   );
 }
