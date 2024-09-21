@@ -16,8 +16,8 @@ function VolumeRadioGroup({ volume, range, onClick }: IVolumeRadioGroupProps) {
         {range.map((item) => (
           <Button
             content={item}
-            paddingInline={5}
-            paddingBlock={10}
+            paddingInline={12}
+            paddingBlock={8}
             additionalClasses={clsx({
               [styles.button]: true,
               [styles.button_active]: volume === item,

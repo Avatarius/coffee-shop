@@ -24,11 +24,14 @@ function Button(props: IButtonProps) {
     transparent,
   } = props;
 
+  const classList = clsx(
+    styles.container,
+    additionalClasses && additionalClasses,
+    transparent && styles.container_transparent
+  );
+
   const paddingX = paddingInline ?? 0;
   const paddingY = paddingBlock ?? 0;
-  const backgroundColor = transparent
-    ? "transparent"
-    : "var(--button-background-color, #f28123)";
 
   function handleClick() {
     if (onClick) {
@@ -38,14 +41,9 @@ function Button(props: IButtonProps) {
 
   return (
     <button
-      className={
-        additionalClasses
-          ? clsx(styles.container, additionalClasses)
-          : styles.container
-      }
+      className={classList}
       style={{
         padding: `${paddingY}px ${paddingX}px`,
-        backgroundColor: backgroundColor,
       }}
       onClick={handleClick}
       disabled={disabled}

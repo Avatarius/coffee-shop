@@ -5,9 +5,13 @@
   font-family: inherit;
   font-size: 20px;
   text-transform: capitalize;
-  // background-color: var(--button-background-color, #f28123);
+  background-color: var(--button-background-color, #f28123);
   cursor: pointer;
   appearance: none;
+}
+
+.container_transparent {
+  background-color: transparent;
 }
 
 .container svg {
