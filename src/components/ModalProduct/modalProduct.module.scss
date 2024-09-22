@@ -1,6 +1,8 @@
 .container {
   border-radius: inherit;
   max-inline-size: 450px;
+  display: flex;
+  flex-direction: column;
 }
 
 .img {
@@ -9,6 +11,9 @@
   border-start-end-radius: inherit;
   object-fit: cover;
   inline-size: 100%;
+  aspect-ratio: 1.5 / 1;
+  object-position: center top;
+  flex-shrink: 1;
 }
 
 .info {
