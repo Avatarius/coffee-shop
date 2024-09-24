@@ -1,42 +1,26 @@
 .container {
+  max-inline-size: 400px;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: inherit;
-  max-inline-size: 450px;
-  display: flex;
-  flex-direction: column;
-}
-
-.img {
-  display: block;
-  border-start-start-radius: inherit;
-  border-start-end-radius: inherit;
-  object-fit: cover;
-  inline-size: 100%;
-  aspect-ratio: 1.5 / 1;
-  object-position: center top;
-  flex-shrink: 1;
 }
 
 .info {
-  padding: 30px;
+  background-color: rgba(0 0 0 / 0.6);
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  border-radius: inherit;
 }
 
 .title {
-  margin-block-end: 10px;
   font-size: 27px;
 }
 
-.volume {
-  margin-block-end: 20px;
-}
-
 .cost {
-  font-size: 25px;
-}
-
-.description {
-  margin-block-end: 10px;
+  font-size: 23px;
 }
 
 .bottom {
