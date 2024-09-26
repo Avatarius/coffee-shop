@@ -90,7 +90,7 @@ const iconData = {
       </>
     ),
     viewBox: "0 0 24 24",
-    size: 35,
+    size: 25,
   },
   [IconType.Tick]: {
     path: (
@@ -104,7 +104,7 @@ const iconData = {
       />
     ),
     viewBox: "0 0 24 24",
-    size: 30,
+    size: 20,
   },
 };
 {

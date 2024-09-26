@@ -27,7 +27,8 @@ function Button(props: IButtonProps) {
   const classList = clsx(
     styles.container,
     additionalClasses && additionalClasses,
-    transparent && styles.container_transparent
+    transparent && styles.container_transparent,
+    disabled && styles.container_disabled
   );
 
   const paddingX = paddingInline ?? 0;

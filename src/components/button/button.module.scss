@@ -6,20 +6,29 @@
   font-size: 20px;
   text-transform: capitalize;
   background-color: var(--button-background-color, transparent);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    box-shadow 0.1s linear;
   cursor: pointer;
   appearance: none;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .container:not(.container_transparent):hover {
-  background-color: #fff;
   color: #000;
+  background-color: #fff;
 }
 
 .container_transparent {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
 }
+
+.container_disabled {
+  border-color: rgba(255 255 255 / 0.5);
+  color: rgba(255 255 255 / 0.5);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 
 .container svg {
   inline-size: 100%;
