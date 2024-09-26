@@ -1,17 +1,24 @@
 .container {
-  border: none;
+  border: 1px solid #fff;
   border-radius: 10px;
   color: var(--button-text-color, #fff);
   font-family: inherit;
   font-size: 20px;
   text-transform: capitalize;
-  background-color: var(--button-background-color, #f28123);
+  background-color: var(--button-background-color, transparent);
   cursor: pointer;
   appearance: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.container:not(.container_transparent):hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .container_transparent {
   background-color: transparent;
+  border: none;
 }
 
 .container svg {
