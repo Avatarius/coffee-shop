@@ -7,7 +7,7 @@ import { CardReview } from "../cardReview/cardReview";
 import { Footer } from "../footer/footer";
 import { useDispatch } from "../../services/store";
 import { fetchProducts } from "../../services/thunk/products";
-import { useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import { useSelector } from "../../services/store";
 import {
   selectCurrentProduct,
@@ -39,7 +39,6 @@ function App() {
     dispatch(fetchReviews());
   }, []);
 
-
   const modalType = useSelector(selectModalType);
 
   const currentReview = useSelector(selectCurrentReview);
@@ -70,7 +69,6 @@ function App() {
       image={product.image}
       onClick={() => handleClickProductCard(product)}
       key={product.id}
-
     />
   ));
   const cardsReviews = useSelector(selectReviews).map((review) => (
@@ -100,19 +98,40 @@ function App() {
     }
   }
 
+  function scrollTo(ref: RefObject<HTMLElement>) {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const heroRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLHeadingElement>(null);
+  const reviewsRef = useRef<HTMLHeadingElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       {renderModal()}
-      <Hero />
+      <Hero
+        scrollToHero={() => scrollTo(heroRef)}
+        scrollToMenu={() => scrollTo(menuRef)}
+        scrollToReviews={() => scrollTo(reviewsRef)}
+        scrollToFooter={() => scrollTo(footerRef)}
+        ref={heroRef}
+      />
       <main>
-        <Splitter text="Популярное" />
+        <Splitter text="Популярное" ref={menuRef} />
         <List cards={cardsPopular} />
         <Splitter text="Меню" />
         <List cards={cardsMenu} />
-        <Splitter text="Отзывы" />
-        <Carousel cards={cardsReviews} cardWidth={340} gap={20}/>
+        <Splitter text="Отзывы" ref={reviewsRef} />
+        <Carousel cards={cardsReviews} cardWidth={340} gap={20} />
       </main>
-      <Footer />
+      <Footer
+        scrollToHero={() => scrollTo(heroRef)}
+        scrollToMenu={() => scrollTo(menuRef)}
+        scrollToReviews={() => scrollTo(reviewsRef)}
+        scrollToFooter={() => scrollTo(footerRef)}
+        ref={footerRef}
+      />
     </>
   );
 }

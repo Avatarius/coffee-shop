@@ -1,15 +1,13 @@
 import { Button } from "../button/button";
 import styles from "./hero.module.scss";
 import { Header } from "../header/header";
+import { INavigation } from "../../utils/types";
+import { forwardRef } from "react";
 
-interface IHero {
-
-}
-
-function Hero() {
+const Hero = forwardRef<HTMLDivElement, INavigation>((props, ref) => {
   return (
-    <section className={styles.container}>
-      <Header />
+    <section className={styles.container} ref={ref}>
+      <Header {...props} />
       <div className={styles.info}>
         <div>
           <h1 className={styles.title}>Espresso Room</h1>
@@ -21,11 +19,16 @@ function Hero() {
             историю, начиная с зерна и заканчивая божественным ароматом в вашей
             чашке.
           </p>
-          <Button content="Заказать" paddingInline={12} paddingBlock={8}/>
+          <Button
+            content="Заказать"
+            paddingInline={12}
+            paddingBlock={8}
+            onClick={props.scrollToMenu}
+          />
         </div>
       </div>
     </section>
   );
-}
+});
 
 export { Hero };

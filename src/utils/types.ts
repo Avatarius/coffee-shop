@@ -16,7 +16,7 @@ interface IBasketItem extends IProduct {
 
 interface IReview {
   id: string;
-  name: string,
+  name: string;
   text: string;
   image: string;
 }
@@ -46,7 +46,7 @@ enum ModalType {
   Review,
   Basket,
   Address,
-  Success
+  Success,
 }
 
 enum IconType {
@@ -58,9 +58,24 @@ enum IconType {
   RightArrow,
   Plus,
   Tick,
-  Success
+  Success,
 }
 
-export {ModalType, IconType};
+interface INavigation {
+  scrollToHero: () => void;
+  scrollToMenu: () => void;
+  scrollToReviews: () => void;
+  scrollToFooter: () => void;
+}
 
-export type { IProduct, IBasketItem, IReview, IModalData, IOrder,  IAddressForm};
+export { ModalType, IconType };
+
+export type {
+  IProduct,
+  IBasketItem,
+  IReview,
+  IModalData,
+  IOrder,
+  IAddressForm,
+  INavigation,
+};

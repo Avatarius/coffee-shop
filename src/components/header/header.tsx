@@ -2,17 +2,18 @@ import styles from "./header.module.scss";
 import { Navigation } from "../navigation/navigation";
 import { useDispatch, useSelector } from "../../services/store";
 import { openModal } from "../../services/slices/modal";
-import { IconType, ModalType } from "../../utils/types";
+import { IconType, INavigation, ModalType } from "../../utils/types";
 import { selectProductListLength } from "../../services/slices/basket";
 import { Button } from "../button/button";
 import { Svg } from "../svg/svg";
 
-function Header() {
+function Header(props: INavigation) {
   const dispatch = useDispatch();
   const basketLength = useSelector(selectProductListLength);
+
   return (
     <header className={styles.header}>
-      <Navigation />
+      <Navigation {...props} />
       <Button
         content={
           <>

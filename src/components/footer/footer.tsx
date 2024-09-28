@@ -1,10 +1,12 @@
+import { forwardRef } from "react";
+import { INavigation } from "../../utils/types";
 import { Navigation } from "../navigation/navigation";
 import styles from "./footer.module.scss";
 
-function Footer() {
+const Footer = forwardRef<HTMLDivElement, INavigation>((props, ref) => {
   return (
-    <footer className={styles.container}>
-      <Navigation />
+    <footer className={styles.container} ref={ref}>
+      <Navigation {...props} />
       <div>
         <h2 className={styles.title}>Контакты:</h2>
         <address className={styles.address}>
@@ -15,6 +17,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+});
 
 export { Footer };
