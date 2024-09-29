@@ -1,22 +1,14 @@
 @font-face {
-  font-family: "Leiko-Regular";
-  src: url("../../src/fonts/font-files/Leiko-Regular.otf") format("opentype");
+  font-family: "Montserrat-Regular";
+  src: url("../../src/fonts/font-files/Montserrat-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "DancingScript-Bold";
-  src: url("../../src/fonts/font-files/DancingScript-Bold.ttf")
-    format("truetype");
+  font-family: "Montserrat-Regular";
+  src: url("../../src/fonts/font-files/Montserrat-Bold.ttf") format("truetype");
   font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "DancingScript-SemiBold";
-  src: url("../../src/fonts/font-files/DancingScript-SemiBold.ttf")
-    format("truetype");
-  font-weight: 600;
   font-display: swap;
 }

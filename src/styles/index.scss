@@ -1,9 +1,9 @@
 body {
   color: var(--main-text-color, #fff);
-  // font-family: Leiko-Regular, sans-serif;
+  font-family: var(--main-font-family, Arial);
   font-weight: 400;
   font-size: 20px;
-  background-color: #2d2727;
+  background-color: var(--main-background-color, #2f2f2f);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

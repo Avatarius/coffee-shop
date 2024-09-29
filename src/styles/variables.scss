@@ -1,14 +1,7 @@
 :root {
+  --main-font-family: "Montserrat-Regular";
+  --main-background-color: #2f2f2f;
   --main-text-color: #fff;
-  --navigation-active-gradient: linear-gradient(
-    145deg,
-    rgba(223, 195, 157, 0.4) 0%,
-    rgba(248, 228, 190, 0.4) 24.48%,
-    rgba(223, 195, 157, 0.4) 49.87%,
-    rgba(248, 228, 190, 0.4) 75%,
-    rgba(248, 228, 190, 0.4) 100%
-  );
-  --navigation-active-border-radius: 30px;
   --button-background-color: transparent;
   --button-text-color: #fff;
   --button-disabled-color: rgba(112, 112, 112);
