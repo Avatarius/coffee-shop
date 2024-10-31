@@ -30,7 +30,7 @@ function ModalAddress() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    /* dispatch(
+    dispatch(
       postOrder({
         productList: basket,
         totalSum: totalSum,
@@ -38,16 +38,23 @@ function ModalAddress() {
         tel: formData.tel,
         address: formData.address,
       })
-    ); */
-    dispatch(clearBasket());
-    dispatch(openModal(ModalType.Success));
+    )
+      .then(() => {
+        dispatch(openModal(ModalType.Success));
+      })
+      .catch(() => {
+        dispatch(openModal(ModalType.Failed));
+      })
+      .finally(() => {
+        dispatch(clearBasket());
+      });
   }
 
   return (
     <Modal>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Button content={<Svg type={IconType.Back}/>} transparent/>
+          <Button content={<Svg type={IconType.Back} />} transparent />
           <h3 className={styles.header__title}>Информация о доставке</h3>
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>

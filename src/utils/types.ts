@@ -47,6 +47,7 @@ enum ModalType {
   Basket,
   Address,
   Success,
+  Failed
 }
 
 enum IconType {

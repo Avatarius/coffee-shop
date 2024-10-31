@@ -29,7 +29,7 @@ import { openModal, selectModalType } from "../../services/slices/modal";
 import { ModalBasket } from "../modalBasket/modalBasket";
 import { products } from "../../data/products";
 import { ModalAddress } from "../modalAddress/modalAddress";
-import { ModalSuccess } from "../modalSuccess/modalSuccess";
+import { ModalStatus } from "../modalStatus/modalStatus";
 
 function App() {
   const dispatch = useDispatch();
@@ -92,7 +92,9 @@ function App() {
       case ModalType.Address:
         return <ModalAddress />;
       case ModalType.Success:
-        return <ModalSuccess />;
+        return <ModalStatus status={true}/>;
+      case ModalType.Failed:
+        return <ModalStatus status={false}/>
       default:
         return <Modal />;
     }
